@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>กราฟราคา Forex สด</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="trader-theme">
+  <nav>
+    <!-- copy โค้ดเมนูเหมือนเดิม -->
+  </nav>
+  <div class="container">
+    <h1>กราฟ Forex สด</h1>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_2f7fa"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget({
+        "width": "100%",
+        "height": 480,
+        "symbol": "OANDA:EURUSD",
+        "interval": "30",
+        "timezone": "Asia/Bangkok",
+        "theme": "dark",
+        "style": "1",
+        "locale": "th",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_2f7fa"
+      });
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+  </div>
+</body>
+</html>
