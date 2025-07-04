@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ราคาตลาด Forex สด</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="trader-theme">
+  <nav>
+    <!-- copy โค้ดเมนูเหมือนเดิม -->
+  </nav>
+  <div class="container">
+    <h1>อัตราแลกเปลี่ยนสด</h1>
+    <table style="width:100%;color:#fff;text-align:center;">
+      <thead>
+        <tr>
+          <th>คู่เงิน</th>
+          <th>ราคา</th>
+        </tr>
+      </thead>
+      <tbody id="rate-list"></tbody>
+    </table>
+  </div>
+  <script>
+    const pairs = [
+      ["USD", "THB"],
+      ["EUR", "USD"],
+      ["GBP", "USD"],
+      ["USD", "JPY"],
+      ["AUD", "USD"]
+    ];
+    pairs.forEach(pair => {
+      fetch(`https://api.exchangerate.host/latest?base=${pair[0]}&symbols=${pair[1]}`)
+      .then(r => r.json())
+      .then(data => {
+        let rate = data.rates ? data.rates[pair[1]] : "-";
+        document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
+      });
+    });
+  </script>
+</body>
+</html>
