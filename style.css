@@ -1,3 +1,6 @@
+/* style.css - ไฟล์สำหรับตกแต่งหน้าตาเว็บ MARKMAN TRADER */
+/* ธีมเน้นความเป็น hi-tech นักลงทุน และกราฟสายเทรดเดอร์ */
+
 body.trader-theme {
     min-height: 100vh;
     background: linear-gradient(120deg, #141E30 0%, #243B55 100%);
@@ -8,6 +11,7 @@ body.trader-theme {
     position: relative;
     overflow-x: hidden;
 }
+/* วาดกราฟ high-tech แบบ SVG เป็นพื้นหลัง (ปรับสีใน stroke ได้) */
 body.trader-theme::before {
     content: "";
     position: fixed;
@@ -25,6 +29,8 @@ body.trader-theme::before {
     0% { background-position: 100% 100%; }
     100% { background-position: 80% 98%; }
 }
+
+/* เมนูด้านบนของเว็บ */
 nav {
     background: rgba(20, 30, 48, 0.97);
     padding: 10px 0;
@@ -47,6 +53,8 @@ nav a:hover {
     color: #f0ad4e;
     text-shadow: 0 0 6px #0fd85066;
 }
+
+/* กล่องโลโก้หัวเว็บ */
 .header-logo {
     display: flex;
     align-items: center;
@@ -69,6 +77,8 @@ nav a:hover {
     letter-spacing: 1px;
     text-shadow: 0 3px 22px #0fd85088;
 }
+
+/* กล่องเนื้อหาแต่ละหน้า */
 .container {
     background: rgba(36, 59, 85, 0.85);
     max-width: 700px;
@@ -79,6 +89,8 @@ nav a:hover {
     z-index: 2;
     position: relative;
 }
+
+/* สไตล์ปุ่ม (เช่น ล็อกอิน ส่งข้อความ) */
 button, input[type="submit"] {
     background: linear-gradient(90deg, #0fd850 30%, #48e0e4 100%);
     color: #151e30;
@@ -96,6 +108,8 @@ button:hover, input[type="submit"]:hover {
     background: linear-gradient(90deg, #f0ad4e 20%, #0fd850 100%);
     color: #1b1b1b;
 }
+
+/* Responsive (รองรับมือถือ) */
 @media (max-width: 600px) {
     .container {
         padding: 16px 6px;

@@ -12,6 +12,7 @@
 
 <body class="trader-theme">
 
+    <!-- เมนูนำทางหลักของทุกหน้า -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -22,11 +23,13 @@
         <a href="graph.html">กราฟ</a>
         <a href="news.html">ข่าว</a>
     </nav>
+    <!-- แสดงโลโก้และชื่อเว็บไซต์ -->
     <div class="header-logo">
         <img src="images/logo.png" alt="MARKMAN TRADER Logo">
         <span>MARKMAN TRADER</span>
     </div>
 
+<!-- ฟอร์มติดต่อสอบถาม -->
 <div class="container">
     <h2>แบบฟอร์มติดต่อ</h2>
     <form id="contactForm">
@@ -38,6 +41,7 @@
     </form>
 </div>
 <script>
+// ส่วนนี้คือ JavaScript สำหรับแสดงข้อความ "ส่งสำเร็จ" เมื่อส่งฟอร์ม
 document.getElementById("contactForm").onsubmit = function(e){
   e.preventDefault();
   document.getElementById("contact-msg").innerText = "ส่งข้อความเรียบร้อย ขอบคุณค่ะ!";

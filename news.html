@@ -12,6 +12,7 @@
 
 <body class="trader-theme">
 
+    <!-- เมนูนำทางหลักของทุกหน้า -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -22,11 +23,13 @@
         <a href="graph.html">กราฟ</a>
         <a href="news.html">ข่าว</a>
     </nav>
+    <!-- แสดงโลโก้และชื่อเว็บไซต์ -->
     <div class="header-logo">
         <img src="images/logo.png" alt="MARKMAN TRADER Logo">
         <span>MARKMAN TRADER</span>
     </div>
 
+<!-- หน้าแสดงข่าวและอัตราแลกเปลี่ยน -->
 <div class="container">
     <h2>ข่าว Forex ล่าสุด</h2>
     <ul id="news-list"></ul>
@@ -42,7 +45,9 @@
     </table>
 </div>
 <script>
-// ข่าว forex (rss2json)
+// -------------------
+// ดึงข่าว Forex (RSS > JSON)
+// -------------------
 const RSS_URL = "https://www.forexfactory.com/ffcal_week_this.xml";
 fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL))
 .then(response => response.json())
@@ -55,7 +60,9 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_U
   document.getElementById("news-list").innerHTML = html;
 });
 
-// อัตราแลกเปลี่ยน
+// -------------------
+// ดึงอัตราแลกเปลี่ยน Forex (API ฟรี)
+// -------------------
 const pairs = [
   ["USD", "THB"],
   ["EUR", "USD"],

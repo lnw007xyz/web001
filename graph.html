@@ -12,6 +12,7 @@
 
 <body class="trader-theme">
 
+    <!-- เมนูนำทางหลักของทุกหน้า -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -22,17 +23,21 @@
         <a href="graph.html">กราฟ</a>
         <a href="news.html">ข่าว</a>
     </nav>
+    <!-- แสดงโลโก้และชื่อเว็บไซต์ -->
     <div class="header-logo">
         <img src="images/logo.png" alt="MARKMAN TRADER Logo">
         <span>MARKMAN TRADER</span>
     </div>
 
+<!-- ฝังกราฟเทรดจาก TradingView Widget -->
 <div class="container">
     <h2>กราฟ Forex สด</h2>
     <div class="tradingview-widget-container">
       <div id="tradingview_2f7fa"></div>
+      <!-- เรียก JS ฝังกราฟสดของคู่เงิน forex (EURUSD) -->
       <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
       <script type="text/javascript">
+      // สร้างกราฟ EURUSD (เปลี่ยน symbol ได้)
       new TradingView.widget({
         "width": "100%",
         "height": 480,
