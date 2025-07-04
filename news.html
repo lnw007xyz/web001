@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MARKMAN TRADER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="trader-theme">
+
+    <nav>
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">ประวัติ</a>
+        <a href="portfolio.html">ผลงาน</a>
+        <a href="tools.html">เครื่องมือ</a>
+        <a href="info.html">ข้อมูล</a>
+        <a href="contact.html">ติดต่อ</a>
+        <a href="graph.html">กราฟ</a>
+        <a href="news.html">ข่าว</a>
+    </nav>
+    <div class="header-logo">
+        <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        <span>MARKMAN TRADER</span>
+    </div>
+
+<div class="container">
+    <h2>ข่าว Forex ล่าสุด</h2>
+    <ul id="news-list"></ul>
+    <h2 style="margin-top:38px;">อัตราแลกเปลี่ยนล่าสุด</h2>
+    <table style="width:100%;color:#fff;text-align:center;">
+      <thead>
+        <tr>
+          <th>คู่เงิน</th>
+          <th>ราคา</th>
+        </tr>
+      </thead>
+      <tbody id="rate-list"></tbody>
+    </table>
+</div>
+<script>
+// ข่าว forex (rss2json)
+const RSS_URL = "https://www.forexfactory.com/ffcal_week_this.xml";
+fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL))
+.then(response => response.json())
+.then(data => {
+  const news = data.items || [];
+  let html = "";
+  for(let i=0; i<Math.min(10, news.length); i++) {
+    html += `<li><a href="${news[i].link}" target="_blank">${news[i].title}</a></li>`;
+  }
+  document.getElementById("news-list").innerHTML = html;
+});
+
+// อัตราแลกเปลี่ยน
+const pairs = [
+  ["USD", "THB"],
+  ["EUR", "USD"],
+  ["GBP", "USD"],
+  ["USD", "JPY"],
+  ["AUD", "USD"]
+];
+pairs.forEach(pair => {
+  fetch(`https://api.exchangerate.host/latest?base=${pair[0]}&symbols=${pair[1]}`)
+  .then(r => r.json())
+  .then(data => {
+    let rate = data.rates ? data.rates[pair[1]] : "-";
+    document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
+  });
+});
+</script>
+</body>
+</html>

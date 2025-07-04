@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MARKMAN TRADER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="trader-theme">
+
+    <nav>
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">ประวัติ</a>
+        <a href="portfolio.html">ผลงาน</a>
+        <a href="tools.html">เครื่องมือ</a>
+        <a href="info.html">ข้อมูล</a>
+        <a href="contact.html">ติดต่อ</a>
+        <a href="graph.html">กราฟ</a>
+        <a href="news.html">ข่าว</a>
+    </nav>
+    <div class="header-logo">
+        <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        <span>MARKMAN TRADER</span>
+    </div>
+
+<div class="container">
+    <h2>แบบฟอร์มติดต่อ</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="ชื่อของคุณ" required><br>
+      <input type="email" id="contact-email" placeholder="อีเมลของคุณ" required><br>
+      <textarea id="message" placeholder="ข้อความ..." rows="5" required style="width:85%;"></textarea><br>
+      <button type="submit">ส่งข้อความ</button>
+      <p id="contact-msg"></p>
+    </form>
+</div>
+<script>
+document.getElementById("contactForm").onsubmit = function(e){
+  e.preventDefault();
+  document.getElementById("contact-msg").innerText = "ส่งข้อความเรียบร้อย ขอบคุณค่ะ!";
+  this.reset();
+}
+</script>
+</body>
+</html>
