@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ข่าว Forex ล่าสุด</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="trader-theme">
+  <nav>
+    <!-- copy โค้ดเมนูเหมือนเดิม -->
+  </nav>
+  <div class="container">
+    <h1>ข่าว Forex ล่าสุด</h1>
+    <ul id="news-list"></ul>
+  </div>
+  <script>
+    // ตัวอย่าง RSS ข่าว forex (ภาษาอังกฤษ)
+    const RSS_URL = "https://www.forexfactory.com/ffcal_week_this.xml";
+
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL))
+    .then(response => response.json())
+    .then(data => {
+      const news = data.items || [];
+      let html = "";
+      for(let i=0; i<Math.min(10, news.length); i++){
+        html += `<li><a href="${news[i].link}" target="_blank">${news[i].title}</a></li>`;
+      }
+      document.getElementById("news-list").innerHTML = html;
+    });
+  </script>
+</body>
+</html>
