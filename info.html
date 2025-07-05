@@ -6,7 +6,51 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <!-- โหลดไอคอน Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* ปุ่มลิงก์ 2 คอลัมน์ + ไอคอน */
+      .info-btn-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 32px;
+      }
+      @media (max-width: 600px) {
+        .info-btn-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .info-link-btn {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 18px;
+        background: linear-gradient(90deg, #0fd850 0%, #48e0e4 100%);
+        border: none;
+        border-radius: 10px;
+        color: #151e30;
+        font-size: 1.14em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background .15s, color .15s, box-shadow .13s;
+        box-shadow: 0 2px 12px #0fd85033;
+        width: 100%;
+        text-align: left;
+        outline: none;
+      }
+      .info-link-btn i {
+        font-size: 1.25em;
+        min-width: 24px;
+        color: #1a233a;
+      }
+      .info-link-btn:hover {
+        background: linear-gradient(90deg, #f0ad4e 0%, #0fd850 100%);
+        color: #1b1b1b;
+        box-shadow: 0 4px 18px #0fd85055;
+      }
+    </style>
 </head>
 <body class="trader-theme">
     <!-- เมนูนำทางหลักของทุกหน้า -->
@@ -31,31 +75,31 @@
         <h2>ข้อมูล Forex และแหล่งเรียนรู้</h2>
         <p>กดปุ่มเพื่อไปยังแหล่งข้อมูล/เว็บไซต์สำคัญ</p>
 
-        <!-- ปุ่มลิงก์ 6 ปุ่ม -->
-        <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 32px;">
+        <!-- ปุ่มลิงก์ 6 ปุ่ม พร้อมไอคอน (ใช้ a + button + i) -->
+        <div class="info-btn-grid">
             <!-- ปุ่ม 1 -->
-            <a href="https://www.bangkokbiznews.com/business/forex" target="_blank">
-                <button>ข่าว Forex ไทย (กรุงเทพธุรกิจ)</button>
+            <a href="https://www.bangkokbiznews.com/business/forex" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-solid fa-newspaper"></i> ข่าว Forex ไทย (กรุงเทพธุรกิจ)</button>
             </a>
             <!-- ปุ่ม 2 -->
-            <a href="https://www.forexfactory.com/" target="_blank">
-                <button>ปฏิทินข่าว Forex Factory</button>
+            <a href="https://www.forexfactory.com/" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-solid fa-calendar-days"></i> ปฏิทินข่าว Forex Factory</button>
             </a>
             <!-- ปุ่ม 3 -->
-            <a href="https://tradingview.com/" target="_blank">
-                <button>TradingView ดูกราฟฟรี</button>
+            <a href="https://tradingview.com/" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-solid fa-chart-line"></i> TradingView ดูกราฟฟรี</button>
             </a>
             <!-- ปุ่ม 4 -->
-            <a href="https://www.investing.com/currencies/" target="_blank">
-                <button>ราคาสดคู่เงิน Investing.com</button>
+            <a href="https://www.investing.com/currencies/" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-solid fa-coins"></i> ราคาสดคู่เงิน Investing.com</button>
             </a>
             <!-- ปุ่ม 5 -->
-            <a href="https://www.bangkokpost.com/business" target="_blank">
-                <button>ข่าวเศรษฐกิจ BangkokPost</button>
+            <a href="https://www.bangkokpost.com/business" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-solid fa-globe"></i> ข่าวเศรษฐกิจ BangkokPost</button>
             </a>
             <!-- ปุ่ม 6 -->
-            <a href="https://github.com/lnw007xyz/File" target="_blank">
-                <button>ไฟล์/โปรเจกต์บน GitHub</button>
+            <a href="https://github.com/lnw007xyz/File" target="_blank" style="text-decoration:none">
+                <button class="info-link-btn"><i class="fa-brands fa-github"></i> ไฟล์/โปรเจกต์บน GitHub</button>
             </a>
         </div>
     </div>
