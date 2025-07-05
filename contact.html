@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
-    <title>MARKMAN TRADER</title>
+    <title>Contact - MARKMAN TRADER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body class="trader-theme">
-
-    <!-- เมนูนำทางหลักของทุกหน้า -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -23,30 +19,14 @@
         <a href="graph.html">กราฟ</a>
         <a href="news.html">ข่าว</a>
     </nav>
-    <!-- แสดงโลโก้และชื่อเว็บไซต์ -->
     <div class="header-logo">
-        <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        <span class="logo-bg-custom">
+            <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        </span>
         <span>MARKMAN TRADER</span>
     </div>
-
-<!-- ฟอร์มติดต่อสอบถาม -->
-<div class="container">
-    <h2>แบบฟอร์มติดต่อ</h2>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="ชื่อของคุณ" required><br>
-      <input type="email" id="contact-email" placeholder="อีเมลของคุณ" required><br>
-      <textarea id="message" placeholder="ข้อความ..." rows="5" required style="width:85%;"></textarea><br>
-      <button type="submit">ส่งข้อความ</button>
-      <p id="contact-msg"></p>
-    </form>
-</div>
-<script>
-// ส่วนนี้คือ JavaScript สำหรับแสดงข้อความ "ส่งสำเร็จ" เมื่อส่งฟอร์ม
-document.getElementById("contactForm").onsubmit = function(e){
-  e.preventDefault();
-  document.getElementById("contact-msg").innerText = "ส่งข้อความเรียบร้อย ขอบคุณค่ะ!";
-  this.reset();
-}
-</script>
+    <div class="container">
+<h2>ติดต่อเรา</h2><ul><li>อีเมล: markman@email.com</li><li>Facebook: MARKMAN TRADER</li></ul>
+    </div>
 </body>
 </html>

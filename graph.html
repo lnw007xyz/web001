@@ -2,41 +2,13 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>กราฟ - MARKMAN TRADER</title>
+    <title>Graph - MARKMAN TRADER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      .chart-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-        margin-top: 30px;
-      }
-      @media (max-width: 1100px) {
-        .chart-grid { grid-template-columns: 1fr; }
-      }
-      .chart-box {
-        background: rgba(36,59,85,0.82);
-        padding: 10px 4px 18px 4px;
-        border-radius: 18px;
-        margin-bottom: 10px;
-        box-shadow: 0 1px 8px #0fd85025;
-      }
-      .chart-box h3 {
-        margin: 0 0 5px 12px;
-        color: #0fd850;
-        font-size: 1.13em;
-        font-weight: bold;
-        letter-spacing: 1px;
-      }
-    </style>
-    <!-- TradingView Widget JS -->
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
 <body class="trader-theme">
-    <!-- เมนูนำทาง -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -48,72 +20,13 @@
         <a href="news.html">ข่าว</a>
     </nav>
     <div class="header-logo">
-        <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        <span class="logo-bg-custom">
+            <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+        </span>
         <span>MARKMAN TRADER</span>
     </div>
     <div class="container">
-        <h2>กราฟตลาด Forex & Crypto</h2>
-        <div class="chart-grid">
-            <!-- กราฟ EURUSD -->
-            <div class="chart-box">
-              <h3>EUR/USD (Forex)</h3>
-              <div id="tv_eurusd"></div>
-            </div>
-            <!-- กราฟ XAUUSD -->
-            <div class="chart-box">
-              <h3>XAU/USD (ทองคำ)</h3>
-              <div id="tv_xauusd"></div>
-            </div>
-            <!-- กราฟ BTCUSD -->
-            <div class="chart-box">
-              <h3>BTC/USD (บิทคอยน์)</h3>
-              <div id="tv_btcusd"></div>
-            </div>
-            <!-- กราฟ GBPJPY -->
-            <div class="chart-box">
-              <h3>GBP/JPY (Forex)</h3>
-              <div id="tv_gbpjpy"></div>
-            </div>
-            <!-- กราฟ GBPUSD -->
-            <div class="chart-box">
-              <h3>GBP/USD (Forex)</h3>
-              <div id="tv_gbpusd"></div>
-            </div>
-            <!-- กราฟ BTHUSD (ใช้ BINANCE:BTHUSDT ถ้าเป็นเหรียญ BitHash หรือ BTCH ให้แจ้งชื่อเหรียญตลาด/Exchange เพิ่ม) -->
-            <div class="chart-box">
-              <h3>BTH/USD</h3>
-              <div id="tv_bthusd"></div>
-            </div>
-        </div>
+<h2>กราฟ</h2><p>TradingView Widget ...</p>
     </div>
-    <script>
-      // ฟังก์ชันสร้าง TradingView Widget แต่ละกราฟ
-      function createTVWidget(containerId, symbol) {
-        new TradingView.widget({
-          "width": "100%",
-          "height": 350,
-          "symbol": symbol,
-          "interval": "30",
-          "timezone": "Asia/Bangkok",
-          "theme": "dark",
-          "style": "1",
-          "locale": "th",
-          "toolbar_bg": "#f1f3f6",
-          "enable_publishing": false,
-          "hide_side_toolbar": false,
-          "allow_symbol_change": true,
-          "container_id": containerId
-        });
-      }
-
-      // สร้าง widget แต่ละตัว (แก้ symbol ได้ตามตลาดที่ต้องการ)
-      createTVWidget("tv_eurusd", "OANDA:EURUSD");
-      createTVWidget("tv_xauusd", "OANDA:XAUUSD");
-      createTVWidget("tv_btcusd", "BITSTAMP:BTCUSD");
-      createTVWidget("tv_gbpjpy", "OANDA:GBPJPY");
-      createTVWidget("tv_gbpusd", "OANDA:GBPUSD");
-      // สมมุติ BTHUSD (ถ้าเป็น Binance BTH/USDT ให้ใช้ "BINANCE:BTHUSDT" ถ้าไม่ถูกต้องระบุ market+symbol เพิ่มได้)
-      createTVWidget("tv_bthusd", "BINANCE:BTHUSDT");
-    </script>
 </body>
 </html>
