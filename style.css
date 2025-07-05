@@ -1,34 +1,30 @@
+/* style.css – MARKMAN TRADER (bg = images/bg.jpg) */
 body.trader-theme {
     min-height: 100vh;
-    background:
-      radial-gradient(circle at 60% 15%, #0fd85055 0%, #243B55 30%, #141E30 100%),
-      linear-gradient(120deg, #1c2b42 0%, #193552 100%);
     font-family: 'Prompt', 'Sarabun', 'Kanit', sans-serif;
     color: #e9f2fa;
     margin: 0;
     padding: 0;
     position: relative;
     overflow-x: hidden;
+    /* ใช้ภาพพื้นหลังหลัก */
+    background: 
+      linear-gradient(120deg, #1c2b42cc 0%, #193552cc 100%),
+      url('images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
-
-body.trader-theme::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 0;
-    opacity: 0.95;
-    background: url('data:image/svg+xml;utf8,<svg width="1800" height="800" xmlns="http://www.w3.org/2000/svg"><g><polyline points="0,600 300,500 600,550 900,350 1200,390 1600,150 1800,250" fill="none" stroke="%230fd850" stroke-width="12" filter="url(#glow)" /><circle cx="300" cy="500" r="14" fill="%23f9fa8f" opacity="0.4"/><circle cx="900" cy="350" r="15" fill="%230fd850" opacity="0.5"/><circle cx="1200" cy="390" r="10" fill="%2348e0e4" opacity="0.7"/></g><defs><filter id="glow"><feGaussianBlur stdDeviation="8" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>');
-    background-repeat: no-repeat;
-    background-size: 110vw 70vh;
-    background-position: right 0 bottom 0;
-    pointer-events: none;
-    animation: moveBg 14s linear infinite alternate;
+/* ปรับ opacity ของเนื้อหาทุกกล่อง (เลือกตามต้องการ) */
+.container {
+    background: rgba(36, 59, 85, 0.88);
+    max-width: 1400px;
+    margin: 40px auto 0;
+    padding: 56px 48px;
+    border-radius: 18px;
+    box-shadow: 0 2px 18px #0005;
+    z-index: 2;
+    position: relative;
 }
-
-@keyframes moveBg {
-    0% { background-position: 100% 100%; }
-    100% { background-position: 75% 99%; }
-}
+/* ... ส่วนที่เหลือเหมือนเดิม ... */
 
 /* เมนูด้านบน */
 nav {
@@ -53,8 +49,7 @@ nav a:hover {
     color: #f0ad4e;
     text-shadow: 0 0 6px #0fd85066;
 }
-
-/* โลโก้เด่น */
+/* โลโก้เด่นลายขาว-น้ำเงิน */
 .header-logo {
     display: flex;
     align-items: center;
@@ -65,20 +60,23 @@ nav a:hover {
     position: relative;
     z-index: 10;
 }
-.header-logo .logo-bg {
+.header-logo .logo-bg-custom {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: radial-gradient(circle at 60% 40%, #0fd850bb 0%, #193552cc 70%, #111e2eaa 100%);
+    background:
+      repeating-conic-gradient(from 20deg, #fff 0deg 10deg, #2474be 10deg 20deg, #e6ecfa 20deg 30deg, #0d254a 30deg 40deg, #fff 40deg 50deg),
+      radial-gradient(circle at 55% 40%, #e6ecfa 0%, #2474be 45%, #0d254a 85%);
     box-shadow:
-        0 0 28px 6px #0fd85080,
-        0 0 0 6px #fff3 inset;
+        0 0 36px 8px #2474be99,
+        0 0 0 7px #fff5 inset;
     padding: 22px;
+    border: 3px solid #b7d6f8;
+    filter: drop-shadow(0 0 14px #2474be66) drop-shadow(0 0 32px #0d254a40);
+    overflow: visible;
     transition: box-shadow .2s;
-    border: 2.5px solid #0fd85099;
-    filter: drop-shadow(0 0 16px #0fd85099) drop-shadow(0 0 28px #151e3080);
 }
 .header-logo img {
     width: 100px;
@@ -88,7 +86,7 @@ nav a:hover {
     background: transparent;
     box-shadow:
       0 0 0 7px #243B5555,
-      0 4px 24px #0fd85066;
+      0 4px 24px #0fd85022;
     position: relative;
     z-index: 1;
 }
@@ -103,21 +101,9 @@ nav a:hover {
     filter: brightness(1.3) drop-shadow(0 2px 0 #193552);
 }
 
-/* กล่องเนื้อหา */
-.container {
-    background: rgba(36, 59, 85, 0.85);
-    max-width: 1400px;
-    margin: 40px auto 0;
-    padding: 56px 48px;
-    border-radius: 18px;
-    box-shadow: 0 2px 18px #0005;
-    z-index: 2;
-    position: relative;
-}
-
 /* Responsive โลโก้ */
 @media (max-width: 600px) {
-    .header-logo .logo-bg {
+    .header-logo .logo-bg-custom {
         padding: 10px;
     }
     .header-logo img {
@@ -128,8 +114,7 @@ nav a:hover {
         font-size: 1.08rem;
     }
 }
-
-/* ตาราง */
+/* ตารางเต็มความกว้าง */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -148,4 +133,17 @@ td {
     border-bottom: 1px solid #233b55;
     color: #d9f0f6;
     font-size: 1.09em;
+}
+/* Responsive อื่นๆ */
+@media (max-width: 600px) {
+    nav a {
+        margin: 0 7px;
+        font-size: 0.97em;
+    }
+    .header-logo img {
+        width: 55px;
+    }
+    .header-logo span {
+        font-size: 1.22rem;
+    }
 }
