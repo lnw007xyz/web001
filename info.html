@@ -1,12 +1,49 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Info - MARKMAN TRADER</title>
+    <title>ข้อมูล - MARKMAN TRADER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ไอคอน Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* ตกแต่งปุ่มในหน้า Info */
+      .info-btn-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+      .info-link-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        background: linear-gradient(90deg, #0fd850 0%, #48e0e4 100%);
+        border: none;
+        border-radius: 10px;
+        color: #151e30;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background .15s, box-shadow .15s;
+        box-shadow: 0 2px 12px #0fd85033;
+        text-align: left;
+        width: 100%;
+      }
+      .info-link-btn i {
+        font-size: 1.3em;
+        min-width: 28px;
+      }
+      .info-link-btn:hover {
+        background: linear-gradient(90deg, #f0ad4e 0%, #0fd850 100%);
+        box-shadow: 0 4px 18px #0fd85055;
+      }
+    </style>
 </head>
 <body class="trader-theme">
     <nav>
@@ -26,7 +63,30 @@
         <span>MARKMAN TRADER</span>
     </div>
     <div class="container">
-<h2>ข้อมูลที่เป็นประโยชน์</h2><ul><li>บทความความรู้</li><li>ลิงก์ดาวน์โหลด</li></ul>
+        <h2>ข้อมูล Forex และแหล่งเรียนรู้</h2>
+        <p>กดปุ่มด้านล่างเพื่อติดตามแหล่งข้อมูลสำคัญ:</p>
+
+        <div class="info-btn-grid">
+            <a href="https://www.bangkokbiznews.com/business/forex" target="_blank">
+                <button class="info-link-btn"><i class="fa-solid fa-newspaper"></i>ข่าว Forex (กรุงเทพธุรกิจ)</button>
+            </a>
+            <a href="https://www.forexfactory.com/" target="_blank">
+                <button class="info-link-btn"><i class="fa-solid fa-calendar-days"></i>ปฏิทินข่าว Forex Factory</button>
+            </a>
+            <a href="https://tradingview.com/" target="_blank">
+                <button class="info-link-btn"><i class="fa-solid fa-chart-line"></i>TradingView กราฟฟรี</button>
+            </a>
+            <a href="https://www.investing.com/currencies/" target="_blank">
+                <button class="info-link-btn"><i class="fa-solid fa-coins"></i>ราคาสด Investing.com</button>
+            </a>
+            <a href="https://www.bangkokpost.com/business" target="_blank">
+                <button class="info-link-btn"><i class="fa-solid fa-globe"></i>ข่าวเศรษฐกิจ BangkokPost</button>
+            </a>
+            <a href="https://github.com/lnw007xyz/File" target="_blank">
+                <button class="info-link-btn"><i class="fa-brands fa-github"></i>โปรเจกต์บน GitHub</button>
+            </a>
+        </div>
     </div>
 </body>
 </html>
+```
