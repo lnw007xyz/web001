@@ -1,82 +1,94 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ติดต่อ - MARKMAN TRADER</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - TraderX</title>
+  <link rel="icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="trader-theme">
-    <!-- เมนูนำทาง -->
-    <div class="price-ticker-bar">
-  <div class="ticker-track">
-    <span class="ticker-item">EUR/USD: <b>1.0862</b> ▲</span>
-    <span class="ticker-item">GBP/USD: <b>1.2745</b> ▼</span>
-    <span class="ticker-item">USD/JPY: <b>161.31</b> ▲</span>
-    <span class="ticker-item">XAU/USD: <b>2351.00</b> ▼</span>
-    <span class="ticker-item">BTC/USD: <b>57900</b> ▲</span>
-    <span class="ticker-item">ETH/USD: <b>3080</b> ▼</span>
-    <!-- เพิ่มเหรียญหรือคู่เงินตามต้องการ -->
-  </div>
-</div>
-
-    <nav>
-        <a href="index.html">หน้าแรก</a>
-        <a href="about.html">ประวัติ</a>
-        <a href="portfolio.html">ผลงาน</a>
-        <a href="tools.html">เครื่องมือ</a>
-        <a href="info.html">ข้อมูล</a>
-        <a href="contact.html">ติดต่อ</a>
-        <a href="graph.html">กราฟ</a>
-        <a href="news.html">ข่าว</a>
-    </nav>
-
-    <!-- โลโก้เด่น -->
-    <div class="header-logo">
-        <span class="logo-bg-custom">
-            <img src="images/logo.png" alt="MARKMAN TRADER Logo">
-        </span>
-        <span>MARKMAN TRADER</span>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="info.html" class="btn btn-gradient">Get Info</a>
     </div>
+  </nav>
 
-    <!-- เนื้อหาหลัก -->
+  <!-- CONTACT SECTION -->
+  <section class="features" style="padding-bottom:40px;">
     <div class="container">
-        <h2>ติดต่อเรา</h2>
-        <form id="contactForm">
-            <!-- ชื่อผู้ส่ง -->
-            <input type="text" id="name" placeholder="ชื่อของคุณ" required style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;">
-
-            <!-- อีเมลผู้ส่ง -->
-            <input type="email" id="contact-email" placeholder="micmark11234560@email.com" required
-                   style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;">
-
-            <!-- ข้อความ -->
-            <textarea id="message" placeholder="ข้อความ..." rows="5" required
-                      style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;"></textarea>
-
-            <!-- ปุ่มส่ง -->
-            <button type="submit" style="padding: 12px 32px; font-size: 1.1em;">ส่งข้อความ</button>
-        </form>
-
-        <!-- ข้อมูลติดต่อเพิ่มเติม -->
-        <div style="margin-top: 24px; font-size: 1.05em; line-height: 1.6;">
-            <p><strong>อีเมล:</strong> micmark11234560@email.com</p>
-            <p><strong>Facebook:</strong> <a href="https://www.facebook.com/LNWZA.TRADER" target="_blank" style="color:#0fd850;">LNWZA TRADER</a></p>
+      <h2>Contact Us</h2>
+      <div class="about-flex">
+        <div class="about-info-card card" style="max-width:540px;margin:auto;">
+          <h3 style="color:#30cfd0;font-family:'Orbitron',sans-serif;margin-bottom:16px;">We'd love to hear from you!</h3>
+          <form action="#" method="POST" class="contact-form" style="display:flex;flex-direction:column;gap:18px;">
+            <div>
+              <label for="name" style="color:#d2f7fa;">Name</label>
+              <input type="text" id="name" name="name" required style="width:100%;padding:10px 14px;border-radius:10px;background:#222428;color:#fff;border:1px solid #30cfd044;font-size:1rem;">
+            </div>
+            <div>
+              <label for="email" style="color:#d2f7fa;">Email</label>
+              <input type="email" id="email" name="email" required style="width:100%;padding:10px 14px;border-radius:10px;background:#222428;color:#fff;border:1px solid #30cfd044;font-size:1rem;">
+            </div>
+            <div>
+              <label for="message" style="color:#d2f7fa;">Message</label>
+              <textarea id="message" name="message" rows="5" required style="width:100%;padding:10px 14px;border-radius:10px;background:#222428;color:#fff;border:1px solid #30cfd044;font-size:1rem;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-gradient btn-lg" style="width:100%;">Send Message</button>
+          </form>
+          <div style="margin-top:30px;color:#7bc9d7;">
+            <i class="fa-solid fa-envelope"></i> Email: micmark112134560@gmail.com<br>
+            <i class="fa-brands fa-discord"></i> Discord: TraderX Community<br>
+            <i class="fa-brands fa-telegram"></i> Facebook: LNWZA TRADER
+          </div>
         </div>
-
-        <!-- ข้อความยืนยันการส่ง -->
-        <p id="contact-msg" style="margin-top: 16px; color: #48e0e4; font-weight: bold;"></p>
+      </div>
     </div>
+  </section>
 
-    <!-- สคริปต์ตอบกลับฟอร์ม -->
-    <script>
-    document.getElementById("contactForm").onsubmit = function(e){
-      e.preventDefault();
-      document.getElementById("contact-msg").innerText = "ส่งข้อความเรียบร้อย ขอบคุณค่ะ!";
-      this.reset();
-    }
-    </script>
+  <!-- MAP (optional) -->
+  <section class="dashboard-preview" style="padding-top:0;">
+    <div class="container">
+      <h2>Our Office</h2>
+      <div class="card dashboard-card" style="max-width:500px;margin:auto;">
+        <iframe src="https://maps.google.com/maps?q=bangkok&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="220" style="border:0;border-radius:18px;" allowfullscreen="" loading="lazy"></iframe>
+        <div style="margin-top:12px;color:#d2f7fa;font-size:1.07rem;">123 Fintech Tower, Bangkok, Thailand</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <div class="footer-links">
+        <a href="info.html">Privacy</a>
+        <a href="info.html">Terms</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 TraderX. All rights reserved.</div>
+  </footer>
 </body>
 </html>
