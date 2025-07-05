@@ -1,9 +1,12 @@
-/* style.css - MARKMAN TRADER */
+/* style.css - MARKMAN TRADER (ver. ไฮเทค-กราฟ-พื้นหลังสว่างขึ้น) */
 /* ธีม Hi-Tech นักลงทุน กราฟ เหมาะทั้ง PC และมือถือ */
 
 body.trader-theme {
     min-height: 100vh;
-    background: linear-gradient(120deg, #141E30 0%, #243B55 100%);
+    /* พื้นหลังไฮเทค สว่างขึ้น มีกราฟและเอฟเฟกต์ glow */
+    background:
+      radial-gradient(circle at 60% 15%, #0fd85055 0%, #243B55 30%, #141E30 100%),
+      linear-gradient(120deg, #1c2b42 0%, #193552 100%);
     font-family: 'Prompt', 'Sarabun', 'Kanit', sans-serif;
     color: #e9f2fa;
     margin: 0;
@@ -12,23 +15,24 @@ body.trader-theme {
     overflow-x: hidden;
 }
 
-/* พื้นหลังกราฟ high-tech */
+/* พื้นหลัง SVG กราฟ/จุดไฟ แบบ hi-tech glow */
 body.trader-theme::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 0;
-    opacity: 0.5;
-    background: url('data:image/svg+xml;utf8,<svg width="1800" height="1200" xmlns="http://www.w3.org/2000/svg"><polyline points="0,800 350,600 800,850 1200,300 1700,350 1800,100" fill="none" stroke="%230fd850" stroke-width="8"/><polyline points="0,1100 450,950 850,1000 1200,400 1500,700 1800,350" fill="none" stroke="%2348e0e4" stroke-width="3" stroke-dasharray="20,16"/></svg>');
+    opacity: 0.95;
+    background: url('data:image/svg+xml;utf8,<svg width="1800" height="800" xmlns="http://www.w3.org/2000/svg"><g><polyline points="0,600 300,500 600,550 900,350 1200,390 1600,150 1800,250" fill="none" stroke="%230fd850" stroke-width="12" filter="url(#glow)" /><circle cx="300" cy="500" r="14" fill="%23f9fa8f" opacity="0.4"/><circle cx="900" cy="350" r="15" fill="%230fd850" opacity="0.5"/><circle cx="1200" cy="390" r="10" fill="%2348e0e4" opacity="0.7"/></g><defs><filter id="glow"><feGaussianBlur stdDeviation="8" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom right;
+    background-size: 110vw 70vh;
+    background-position: right 0 bottom 0;
     pointer-events: none;
     animation: moveBg 14s linear infinite alternate;
 }
+
 @keyframes moveBg {
     0% { background-position: 100% 100%; }
-    100% { background-position: 80% 98%; }
+    100% { background-position: 75% 99%; }
 }
 
 /* เมนูด้านบน */
@@ -82,9 +86,9 @@ nav a:hover {
 /* กล่องเนื้อหา (container) ปรับกว้างรองรับจอใหญ่ */
 .container {
     background: rgba(36, 59, 85, 0.85);
-    max-width: 1400px;     /* ปรับกว้างสุดสำหรับจอใหญ่ */
+    max-width: 1400px;
     margin: 40px auto 0;
-    padding: 56px 48px;    /* padding เยอะขึ้นดูโล่ง */
+    padding: 56px 48px;
     border-radius: 18px;
     box-shadow: 0 2px 18px #0005;
     z-index: 2;
