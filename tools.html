@@ -2,11 +2,64 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Tools - MARKMAN TRADER</title>
+    <title>เครื่องมือ - MARKMAN TRADER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .tool-section {
+        background: rgba(36,59,85,0.90);
+        border-radius: 18px;
+        box-shadow: 0 2px 10px #0fd85022;
+        margin-bottom: 36px;
+        padding: 28px 18px 20px 18px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .tool-section h3 {
+        margin-top: 0;
+        color: #0fd850;
+      }
+      .tool-form label { font-weight: bold; margin-right: 7px; }
+      .tool-form input[type="number"], .tool-form input[type="text"] {
+        width: 110px;
+        padding: 6px 8px;
+        border-radius: 6px;
+        border: 1px solid #b7d6f8;
+        margin-bottom: 7px;
+        font-family: 'Prompt', sans-serif;
+      }
+      .tool-form select {
+        padding: 5px 8px;
+        border-radius: 6px;
+        border: 1px solid #b7d6f8;
+      }
+      .tool-form button {
+        padding: 7px 24px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #0fd850 0%, #48e0e4 100%);
+        color: #192c44;
+        font-weight: bold;
+        border: none;
+        margin-top: 5px;
+        cursor: pointer;
+        transition: background .14s;
+      }
+      .tool-form button:hover {
+        background: linear-gradient(90deg, #f0ad4e 0%, #0fd850 100%);
+      }
+      .tool-result {
+        color: #fff;
+        margin: 13px 0 2px 0;
+        font-size: 1.09em;
+        font-weight: 600;
+      }
+      @media (max-width: 600px) {
+        .tool-section { padding: 15px 6px; }
+      }
+    </style>
 </head>
 <body class="trader-theme">
     <nav>
@@ -26,7 +79,98 @@
         <span>MARKMAN TRADER</span>
     </div>
     <div class="container">
-<h2>เครื่องมือเทรดเดอร์</h2><ul><li>เครื่องคิดเลข Forex</li><li>Pivot Point</li><li>Risk Management</li></ul>
+
+        <!-- Forex Calculator -->
+        <div class="tool-section">
+            <h3>เครื่องคิดเลข Forex (Pip Value)</h3>
+            <form class="tool-form" id="pipForm">
+                <label>ขนาดล็อต (Lot):</label>
+                <input type="number" id="pip-lot" step="0.01" min="0.01" value="1" required>
+                <label>ขนาดสัญญา (Contract Size):</label>
+                <input type="number" id="pip-contract" step="1" min="1" value="100000" required>
+                <label>คู่เงิน:</label>
+                <select id="pip-symbol">
+                    <option value="USDTHB">USD/THB</option>
+                    <option value="EURUSD" selected>EUR/USD</option>
+                    <option value="USDJPY">USD/JPY</option>
+                </select>
+                <br>
+                <label>ราคาปัจจุบัน:</label>
+                <input type="number" id="pip-price" step="0.00001" value="1.10000" required>
+                <button type="submit">คำนวณ</button>
+            </form>
+            <div class="tool-result" id="pipResult"></div>
+        </div>
+
+        <!-- Pivot Point Calculator -->
+        <div class="tool-section">
+            <h3>Pivot Point Calculator</h3>
+            <form class="tool-form" id="pivotForm">
+                <label>High:</label>
+                <input type="number" id="pivot-high" step="0.00001" required>
+                <label>Low:</label>
+                <input type="number" id="pivot-low" step="0.00001" required>
+                <label>Close:</label>
+                <input type="number" id="pivot-close" step="0.00001" required>
+                <button type="submit">คำนวณ</button>
+            </form>
+            <div class="tool-result" id="pivotResult"></div>
+        </div>
+
+        <!-- Risk Management -->
+        <div class="tool-section">
+            <h3>Risk Management</h3>
+            <form class="tool-form" id="riskForm">
+                <label>เงินทุน (บาท):</label>
+                <input type="number" id="risk-balance" min="1" value="10000" required>
+                <label>Risk %:</label>
+                <input type="number" id="risk-percent" min="0.1" max="100" step="0.01" value="2" required>
+                <label>Stop Loss (Pip):</label>
+                <input type="number" id="risk-sl" min="1" step="0.1" value="50" required>
+                <button type="submit">คำนวณ</button>
+            </form>
+            <div class="tool-result" id="riskResult"></div>
+        </div>
+
     </div>
+    <script>
+    // 1. Pip Calculator
+    document.getElementById('pipForm').onsubmit = function(e){
+        e.preventDefault();
+        let lot = parseFloat(document.getElementById('pip-lot').value);
+        let contract = parseInt(document.getElementById('pip-contract').value);
+        let price = parseFloat(document.getElementById('pip-price').value);
+        let symbol = document.getElementById('pip-symbol').value;
+        let pip = (symbol === 'USDJPY') ? 0.01 : 0.0001;
+        let value = lot * contract * pip / price;
+        document.getElementById('pipResult').innerText =
+          'มูลค่า 1 Pip = ' + value.toFixed(2) + ' USD';
+    };
+    // 2. Pivot Point
+    document.getElementById('pivotForm').onsubmit = function(e){
+        e.preventDefault();
+        let high = parseFloat(document.getElementById('pivot-high').value);
+        let low = parseFloat(document.getElementById('pivot-low').value);
+        let close = parseFloat(document.getElementById('pivot-close').value);
+        let PP = (high + low + close) / 3;
+        let R1 = (2 * PP) - low;
+        let S1 = (2 * PP) - high;
+        let R2 = PP + (high - low);
+        let S2 = PP - (high - low);
+        let html = `PP: ${PP.toFixed(5)} | R1: ${R1.toFixed(5)} | S1: ${S1.toFixed(5)}<br>R2: ${R2.toFixed(5)} | S2: ${S2.toFixed(5)}`;
+        document.getElementById('pivotResult').innerHTML = html;
+    };
+    // 3. Risk Management
+    document.getElementById('riskForm').onsubmit = function(e){
+        e.preventDefault();
+        let balance = parseFloat(document.getElementById('risk-balance').value);
+        let risk = parseFloat(document.getElementById('risk-percent').value);
+        let sl = parseFloat(document.getElementById('risk-sl').value);
+        let risk_amt = balance * risk / 100;
+        let lot = (risk_amt / sl) / 10; // สมมติ 1 lot = 100,000, 1 pip = $10
+        document.getElementById('riskResult').innerHTML =
+          'ขนาดล็อตสูงสุด (โดยไม่เกิน ' + risk + '%) ≈ <b>' + lot.toFixed(2) + ' Lot</b>';
+    };
+    </script>
 </body>
 </html>
