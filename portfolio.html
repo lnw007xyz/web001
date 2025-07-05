@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio - MARKMAN TRADER</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>ผลงาน - MARKMAN TRADER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="trader-theme">
-    <div class="price-ticker-bar">
-  <div class="ticker-track">
-    <span class="ticker-item">EUR/USD: <b>1.0862</b> ▲</span>
-    <span class="ticker-item">GBP/USD: <b>1.2745</b> ▼</span>
-    <span class="ticker-item">USD/JPY: <b>161.31</b> ▲</span>
-    <span class="ticker-item">XAU/USD: <b>2351.00</b> ▼</span>
-    <span class="ticker-item">BTC/USD: <b>57900</b> ▲</span>
-    <span class="ticker-item">ETH/USD: <b>3080</b> ▼</span>
-    <!-- เพิ่มเหรียญหรือคู่เงินตามต้องการ -->
+  <div class="price-ticker-bar">
+    <div class="ticker-track">
+      <span class="ticker-item">EUR/USD: <b>1.0862</b> ▲</span>
+      <span class="ticker-item">GBP/USD: <b>1.2745</b> ▼</span>
+      <span class="ticker-item">USD/JPY: <b>161.31</b> ▲</span>
+      <span class="ticker-item">XAU/USD: <b>2351.00</b> ▼</span>
+      <span class="ticker-item">BTC/USD: <b>57900</b> ▲</span>
+      <span class="ticker-item">ETH/USD: <b>3080</b> ▼</span>
+    </div>
   </div>
-</div>
-
-    <nav>
-        <a href="index.html">หน้าแรก</a>
-        <a href="about.html">ประวัติ</a>
-        <a href="portfolio.html">ผลงาน</a>
-        <a href="tools.html">เครื่องมือ</a>
-        <a href="info.html">ข้อมูล</a>
-        <a href="contact.html">ติดต่อ</a>
-        <a href="graph.html">กราฟ</a>
-        <a href="news.html">ข่าว</a>
-    </nav>
-    <div class="header-logo">
-        <span class="logo-bg-custom">
-            <img src="images/logo.png" alt="MARKMAN TRADER Logo">
-        </span>
-        <span>MARKMAN TRADER</span>
+  <nav>
+    <div class="burger-menu" tabindex="0" aria-label="Show Menu">
+      <span></span><span></span><span></span>
     </div>
-    <div class="container">
-<h2>ผลงาน</h2><ul><li>ผลงาน 1 ...</li><li>ผลงาน 2 ...</li></ul>
+    <div class="nav-underline"></div>
+    <div class="nav-links">
+      <a href="index.html">หน้าแรก</a>
+      <a href="about.html">ประวัติ</a>
+      <a href="portfolio.html" class="active">ผลงาน</a>
+      <a href="tools.html">เครื่องมือ</a>
+      <a href="info.html">ข้อมูล</a>
+      <a href="contact.html">ติดต่อ</a>
+      <a href="graph.html">กราฟ</a>
+      <a href="news.html">ข่าว</a>
     </div>
+  </nav>
+  <div class="header-logo">
+    <span class="logo-bg-custom">
+      <img src="images/logo.png" alt="MARKMAN TRADER Logo">
+    </span>
+    <span>MARKMAN TRADER</span>
+  </div>
+  <div class="container">
+    <h2>ผลงาน</h2>
+    <p>แสดงผลงานของคุณที่นี่ (เช่น โปรเจค, ผลลัพธ์การเทรด, ผลงานการเขียน ฯลฯ)</p>
+  </div>
+  <audio id="nav-sound" preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12c7112c43.mp3" type="audio/mp3">
+  </audio>
+  <script>
+    (function(){/* โค้ดเนวิเกชันเหมือน index.html ข้างบน */})();
+  </script>
 </body>
 </html>
