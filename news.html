@@ -165,7 +165,7 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_U
   document.getElementById("news-list").innerHTML = html;
 });
 
-// --------- ดึงอัตราแลกเปลี่ยน Forex ---------
+// --------- ดึงอัตราแลกเปลี่ยน Forex (API: frankfurter.app) ---------
 const pairs = [
   ["USD", "THB"],
   ["EUR", "USD"],
@@ -173,13 +173,17 @@ const pairs = [
   ["USD", "JPY"],
   ["AUD", "USD"]
 ];
+
 pairs.forEach(pair => {
-  fetch(`https://api.exchangerate.host/latest?base=${pair[0]}&symbols=${pair[1]}`)
-  .then(r => r.json())
-  .then(data => {
-    let rate = data.rates ? data.rates[pair[1]] : "-";
-    document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
-  });
+  fetch(`https://api.frankfurter.app/latest?from=${pair[0]}&to=${pair[1]}`)
+    .then(r => r.json())
+    .then(data => {
+      let rate = data.rates ? data.rates[pair[1]] : "-";
+      document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
+    })
+    .catch(() => {
+      document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>-</td></tr>`;
+    });
 });
 </script>
 </body>
