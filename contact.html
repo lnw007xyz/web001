@@ -2,13 +2,14 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Contact - MARKMAN TRADER</title>
+    <title>ติดต่อ - MARKMAN TRADER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="trader-theme">
+    <!-- เมนูนำทาง -->
     <nav>
         <a href="index.html">หน้าแรก</a>
         <a href="about.html">ประวัติ</a>
@@ -19,14 +20,51 @@
         <a href="graph.html">กราฟ</a>
         <a href="news.html">ข่าว</a>
     </nav>
+
+    <!-- โลโก้เด่น -->
     <div class="header-logo">
         <span class="logo-bg-custom">
             <img src="images/logo.png" alt="MARKMAN TRADER Logo">
         </span>
         <span>MARKMAN TRADER</span>
     </div>
+
+    <!-- เนื้อหาหลัก -->
     <div class="container">
-<h2>ติดต่อเรา</h2><ul><li>อีเมล: markman@email.com</li><li>Facebook: MARKMAN TRADER</li></ul>
+        <h2>ติดต่อเรา</h2>
+        <form id="contactForm">
+            <!-- ชื่อผู้ส่ง -->
+            <input type="text" id="name" placeholder="ชื่อของคุณ" required style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;">
+
+            <!-- อีเมลผู้ส่ง -->
+            <input type="email" id="contact-email" placeholder="micmark11234560@email.com" required
+                   style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;">
+
+            <!-- ข้อความ -->
+            <textarea id="message" placeholder="ข้อความ..." rows="5" required
+                      style="width: 85%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none;"></textarea>
+
+            <!-- ปุ่มส่ง -->
+            <button type="submit" style="padding: 12px 32px; font-size: 1.1em;">ส่งข้อความ</button>
+        </form>
+
+        <!-- ข้อมูลติดต่อเพิ่มเติม -->
+        <div style="margin-top: 24px; font-size: 1.05em; line-height: 1.6;">
+            <p><strong>อีเมล:</strong> micmark11234560@email.com</p>
+            <p><strong>Facebook:</strong> <a href="https://www.facebook.com/LNWZA.TRADER" target="_blank" style="color:#0fd850;">LNWZA TRADER</a></p>
+        </div>
+
+        <!-- ข้อความยืนยันการส่ง -->
+        <p id="contact-msg" style="margin-top: 16px; color: #48e0e4; font-weight: bold;"></p>
     </div>
+
+    <!-- สคริปต์ตอบกลับฟอร์ม -->
+    <script>
+    document.getElementById("contactForm").onsubmit = function(e){
+      e.preventDefault();
+      document.getElementById("contact-msg").innerText = "ส่งข้อความเรียบร้อย ขอบคุณค่ะ!";
+      this.reset();
+    }
+    </script>
 </body>
 </html>
