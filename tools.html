@@ -80,7 +80,7 @@
     </div>
     <div class="container">
 
-        <!-- Forex Calculator -->
+        <!-- 1. Forex Calculator -->
         <div class="tool-section">
             <h3>เครื่องคิดเลข Forex (Pip Value)</h3>
             <form class="tool-form" id="pipForm">
@@ -102,7 +102,7 @@
             <div class="tool-result" id="pipResult"></div>
         </div>
 
-        <!-- Pivot Point Calculator -->
+        <!-- 2. Pivot Point Calculator -->
         <div class="tool-section">
             <h3>Pivot Point Calculator</h3>
             <form class="tool-form" id="pivotForm">
@@ -117,7 +117,7 @@
             <div class="tool-result" id="pivotResult"></div>
         </div>
 
-        <!-- Risk Management -->
+        <!-- 3. Risk Management -->
         <div class="tool-section">
             <h3>Risk Management</h3>
             <form class="tool-form" id="riskForm">
@@ -130,6 +130,20 @@
                 <button type="submit">คำนวณ</button>
             </form>
             <div class="tool-result" id="riskResult"></div>
+        </div>
+
+        <!-- 4. แปลงทองคำ ออนซ์ → ทองบาท/บาทไทย -->
+        <div class="tool-section">
+            <h3>แปลงทองคำ (ออนซ์ → ทองบาท และเงินบาท)</h3>
+            <form class="tool-form" id="goldForm">
+                <label>จำนวนทองคำ (ออนซ์):</label>
+                <input type="number" id="gold-oz" step="0.01" value="1" min="0.01" required>
+                <label>ราคาทอง/บาท (บาท):</label>
+                <input type="number" id="gold-baht-price" step="1" value="39000" min="1" required>
+                <button type="submit">คำนวณ</button>
+            </form>
+            <div class="tool-result" id="goldResult"></div>
+            <div style="font-size:0.95em;color:#aaa;margin-top:8px;">* 1 ออนซ์ ≈ 2.041 ทองบาท (ไทย)</div>
         </div>
 
     </div>
@@ -170,6 +184,17 @@
         let lot = (risk_amt / sl) / 10; // สมมติ 1 lot = 100,000, 1 pip = $10
         document.getElementById('riskResult').innerHTML =
           'ขนาดล็อตสูงสุด (โดยไม่เกิน ' + risk + '%) ≈ <b>' + lot.toFixed(2) + ' Lot</b>';
+    };
+    // 4. Gold Converter
+    document.getElementById('goldForm').onsubmit = function(e){
+        e.preventDefault();
+        let oz = parseFloat(document.getElementById('gold-oz').value);
+        let priceBaht = parseFloat(document.getElementById('gold-baht-price').value);
+        let bahtGold = oz * 31.1035 / 15.244;
+        let resultBaht = bahtGold * priceBaht;
+        document.getElementById('goldResult').innerHTML =
+          oz + ' ออนซ์ ≈ <b>' + bahtGold.toFixed(3) + ' ทองบาท</b> (' +
+          resultBaht.toLocaleString() + ' บาท)';
     };
     </script>
 </body>
