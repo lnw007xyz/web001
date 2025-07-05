@@ -15,21 +15,24 @@
       .news-fb-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 28px;
+        gap: 38px;
         margin: 38px 0 0 0;
+        width: 100%;
       }
-      @media (max-width: 900px) {
+      @media (max-width: 1200px) {
         .news-fb-row {
           grid-template-columns: 1fr;
         }
       }
       .news-fb-col {
-        background: rgba(36,59,85,0.75);
-        padding: 16px 12px;
-        border-radius: 12px;
+        background: rgba(36,59,85,0.80);
+        padding: 22px 16px 16px 16px;
+        border-radius: 18px;
         box-shadow: 0 1px 8px #0fd85025;
         min-width: 0;
         overflow: hidden;
+        width: 100%;
+        max-width: 100%;
     }
       .news-fb-col ul {
         margin: 12px 0 14px 0;
@@ -45,14 +48,23 @@
       }
       .news-fb-col iframe {
         min-width: 220px;
-        min-height: 320px;
+        min-height: 1680px;      /* สูงขึ้น 4 เท่า */
         width: 100%;
-        height: 420px;
-        border-radius: 12px;
-        border: 1.5px solid #0fd85033;
-        box-shadow: 0 0 6px #0fd85044;
+        height: 1680px;          /* สูงขึ้น 4 เท่า */
+        border-radius: 18px;
+        border: 2px solid #0fd85033;
+        box-shadow: 0 0 12px #0fd85044;
         background: #162536;
         margin-bottom: 0;
+        display: block;
+      }
+      /* ปรับ Facebook Page ให้สูง 1680px */
+      .fb-page,
+      .fb-page span,
+      .fb-page span iframe[style] {
+        min-height: 1680px !important;
+        height: 1680px !important;
+        max-height: none !important;
       }
     </style>
 </head>
@@ -99,8 +111,8 @@
                 <div class="fb-page"
                     data-href="https://web.facebook.com/shininggold.th"
                     data-tabs="timeline"
-                    data-width="500"
-                    data-height="650"
+                    data-width="550"
+                    data-height="1680"
                     data-small-header="false"
                     data-adapt-container-width="true"
                     data-hide-cover="false"
@@ -116,8 +128,8 @@
                 <div class="fb-page"
                     data-href="https://web.facebook.com/YLGGroup"
                     data-tabs="timeline"
-                    data-width="500"
-                    data-height="650"
+                    data-width="550"
+                    data-height="1680"
                     data-small-header="false"
                     data-adapt-container-width="true"
                     data-hide-cover="false"
