@@ -12,7 +12,6 @@
         src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v19.0"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      /* Responsive 2 คอลัมน์ */
       .news-fb-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -30,7 +29,8 @@
         border-radius: 12px;
         box-shadow: 0 1px 8px #0fd85025;
         min-width: 0;
-      }
+        overflow: hidden;
+    }
       .news-fb-col ul {
         margin: 12px 0 14px 0;
         padding-left: 18px;
@@ -42,6 +42,17 @@
       .news-fb-col a {
         color: #0fd850;
         text-decoration: underline;
+      }
+      .news-fb-col iframe {
+        min-width: 220px;
+        min-height: 320px;
+        width: 100%;
+        height: 420px;
+        border-radius: 12px;
+        border: 1.5px solid #0fd85033;
+        box-shadow: 0 0 6px #0fd85044;
+        background: #162536;
+        margin-bottom: 0;
       }
     </style>
 </head>
@@ -117,26 +128,26 @@
             </div>
         </div>
 
-        <!-- Section 4: ข่าววิเคราะห์/บทความจากเว็บ YLG และ Shining Gold (2 คอลัมน์) -->
+        <!-- Section 4: วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold (ฝังหน้าเว็บจริง) -->
         <h2 style="margin-top:45px;">วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold</h2>
         <div class="news-fb-row">
             <!-- คอลัมน์ YLG -->
             <div class="news-fb-col">
                 <h3 style="margin-bottom:10px;">YLG: Daily Market Analysis</h3>
-                <ul id="ylg-list">
-                    <!-- ข่าว/บทวิเคราะห์ YLG แสดงตรงนี้ -->
-                </ul>
+                <iframe 
+                    src="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis"
+                    loading="lazy"></iframe>
                 <a href="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis" 
-                   target="_blank" style="color:#0fd850;">อ่านทั้งหมด &gt;&gt;</a>
+                   target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
             </div>
             <!-- คอลัมน์ Shining Gold -->
             <div class="news-fb-col">
                 <h3 style="margin-bottom:10px;">Shining Gold: Investor Corner</h3>
-                <ul id="shining-list">
-                    <!-- ข่าว/บทวิเคราะห์ Shining Gold แสดงตรงนี้ -->
-                </ul>
+                <iframe 
+                    src="https://shininggold.co.th/investor_corner/"
+                    loading="lazy"></iframe>
                 <a href="https://shininggold.co.th/investor_corner/" 
-                   target="_blank" style="color:#0fd850;">อ่านทั้งหมด &gt;&gt;</a>
+                   target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
             </div>
         </div>
     </div>
@@ -169,30 +180,6 @@ pairs.forEach(pair => {
     let rate = data.rates ? data.rates[pair[1]] : "-";
     document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
   });
-});
-
-// --------- ข่าววิเคราะห์ YLG (RSS Feed) ---------
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/9RHXfVR4F2qsmZmG.xml")
-.then(r => r.json())
-.then(data => {
-    const items = data.items || [];
-    let html = "";
-    for (let i = 0; i < Math.min(5, items.length); i++) {
-        html += `<li><a href="${items[i].link}" target="_blank">${items[i].title}</a></li>`;
-    }
-    document.getElementById("ylg-list").innerHTML = html || "<li>ไม่พบข้อมูล</li>";
-});
-
-// --------- ข่าววิเคราะห์ Shining Gold (RSS Feed) ---------
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/E1tFcrEbKm1v2E6I.xml")
-.then(r => r.json())
-.then(data => {
-    const items = data.items || [];
-    let html = "";
-    for (let i = 0; i < Math.min(5, items.length); i++) {
-        html += `<li><a href="${items[i].link}" target="_blank">${items[i].title}</a></li>`;
-    }
-    document.getElementById("shining-list").innerHTML = html || "<li>ไม่พบข้อมูล</li>";
 });
 </script>
 </body>
