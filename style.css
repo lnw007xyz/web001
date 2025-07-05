@@ -1,5 +1,5 @@
-/* style.css - ไฟล์สำหรับตกแต่งหน้าตาเว็บ MARKMAN TRADER */
-/* ธีมเน้นความเป็น hi-tech นักลงทุน และกราฟสายเทรดเดอร์ */
+/* style.css - MARKMAN TRADER */
+/* ธีม Hi-Tech นักลงทุน กราฟ เหมาะทั้ง PC และมือถือ */
 
 body.trader-theme {
     min-height: 100vh;
@@ -11,26 +11,27 @@ body.trader-theme {
     position: relative;
     overflow-x: hidden;
 }
-/* วาดกราฟ high-tech แบบ SVG เป็นพื้นหลัง (ปรับสีใน stroke ได้) */
+
+/* พื้นหลังกราฟ high-tech */
 body.trader-theme::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 0;
     opacity: 0.5;
-    background: url('data:image/svg+xml;utf8,<svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg"><polyline points="0,600 200,500 400,550 600,300 800,350 1000,100" fill="none" stroke="%230fd850" stroke-width="6"/><polyline points="0,700 200,600 400,650 600,400 800,450 1000,250" fill="none" stroke="%2348e0e4" stroke-width="2" stroke-dasharray="12,8"/></svg>');
+    background: url('data:image/svg+xml;utf8,<svg width="1800" height="1200" xmlns="http://www.w3.org/2000/svg"><polyline points="0,800 350,600 800,850 1200,300 1700,350 1800,100" fill="none" stroke="%230fd850" stroke-width="8"/><polyline points="0,1100 450,950 850,1000 1200,400 1500,700 1800,350" fill="none" stroke="%2348e0e4" stroke-width="3" stroke-dasharray="20,16"/></svg>');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom right;
     pointer-events: none;
-    animation: moveBg 12s linear infinite alternate;
+    animation: moveBg 14s linear infinite alternate;
 }
 @keyframes moveBg {
     0% { background-position: 100% 100%; }
     100% { background-position: 80% 98%; }
 }
 
-/* เมนูด้านบนของเว็บ */
+/* เมนูด้านบน */
 nav {
     background: rgba(20, 30, 48, 0.97);
     padding: 10px 0;
@@ -54,7 +55,7 @@ nav a:hover {
     text-shadow: 0 0 6px #0fd85066;
 }
 
-/* กล่องโลโก้หัวเว็บ */
+/* โลโก้หัวเว็บ */
 .header-logo {
     display: flex;
     align-items: center;
@@ -78,19 +79,42 @@ nav a:hover {
     text-shadow: 0 3px 22px #0fd85088;
 }
 
-/* กล่องเนื้อหาแต่ละหน้า */
+/* กล่องเนื้อหา (container) ปรับกว้างรองรับจอใหญ่ */
 .container {
     background: rgba(36, 59, 85, 0.85);
-    max-width: 700px;
+    max-width: 1400px;     /* ปรับกว้างสุดสำหรับจอใหญ่ */
     margin: 40px auto 0;
-    padding: 32px 24px;
-    border-radius: 16px;
+    padding: 56px 48px;    /* padding เยอะขึ้นดูโล่ง */
+    border-radius: 18px;
     box-shadow: 0 2px 18px #0005;
     z-index: 2;
     position: relative;
 }
 
-/* สไตล์ปุ่ม (เช่น ล็อกอิน ส่งข้อความ) */
+/* ยิ่งจอใหญ่ ยิ่งอยากให้โล่ง */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1700px;
+        padding: 64px 80px;
+    }
+}
+
+/* Tablet หรือจอแคบ */
+@media (max-width: 900px) {
+    .container {
+        max-width: 99vw;
+        padding: 18px 4vw;
+    }
+}
+
+/* มือถือ */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px 2vw;
+    }
+}
+
+/* ปุ่ม */
 button, input[type="submit"] {
     background: linear-gradient(90deg, #0fd850 30%, #48e0e4 100%);
     color: #151e30;
@@ -109,12 +133,29 @@ button:hover, input[type="submit"]:hover {
     color: #1b1b1b;
 }
 
-/* Responsive (รองรับมือถือ) */
+/* ตารางเต็มความกว้าง */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+}
+th, td {
+    padding: 10px 6px;
+}
+th {
+    background: none;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #0fd85055;
+}
+td {
+    border-bottom: 1px solid #233b55;
+    color: #d9f0f6;
+    font-size: 1.09em;
+}
+
+/* Responsive อื่นๆ */
 @media (max-width: 600px) {
-    .container {
-        padding: 16px 6px;
-        max-width: 98vw;
-    }
     .header-logo img {
         width: 55px;
     }
