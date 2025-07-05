@@ -12,19 +12,23 @@ body.trader-theme {
     background-size: cover;
 }
 
-/* ปรับกล่องเนื้อหา */
+/* กล่องเนื้อหา – ดีไซน์สวย ทันสมัย แตกต่างพื้นหลัง */
 .container {
-    background: rgba(36, 59, 85, 0.88);
+    background: linear-gradient(120deg, rgba(37,64,114,0.87) 0%, rgba(29,56,89,0.94) 100%);
+    backdrop-filter: blur(2.5px);
     max-width: 1400px;
     margin: 40px auto 0;
     padding: 56px 48px;
-    border-radius: 18px;
-    box-shadow: 0 2px 18px #0005;
+    border-radius: 22px;
+    box-shadow:
+      0 4px 32px #162e5066,
+      0 0px 0px #b7d6f822 inset;
     z-index: 2;
     position: relative;
+    transition: background .2s, box-shadow .2s;
 }
 
-/* เมนู block สวย */
+/* เมนู block */
 nav {
     background: rgba(21, 36, 58, 0.97);
     padding: 0;
@@ -132,6 +136,7 @@ nav a:hover, nav a:focus {
         font-size: 1.08rem;
     }
 }
+
 /* ตาราง */
 table {
     width: 100%;
