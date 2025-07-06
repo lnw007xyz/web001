@@ -1,159 +1,157 @@
-<!DOCTYPE html> 
-<html lang="th">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ข้อมูล - MARKMAN TRADER</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome CDN สำหรับไอคอน -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Info - TraderX</title>
+  <link rel="icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="trader-theme">
-  <div class="price-ticker-bar">
-  <div class="ticker-track">
-    <span class="ticker-item">EUR/USD: <b>1.0862</b> ▲</span>
-    <span class="ticker-item">GBP/USD: <b>1.2745</b> ▼</span>
-    <span class="ticker-item">USD/JPY: <b>161.31</b> ▲</span>
-    <span class="ticker-item">XAU/USD: <b>2351.00</b> ▼</span>
-    <span class="ticker-item">BTC/USD: <b>57900</b> ▲</span>
-    <span class="ticker-item">ETH/USD: <b>3080</b> ▼</span>
-    <!-- เพิ่มเหรียญหรือคู่เงินตามต้องการ -->
-  </div>
-</div>
-
-  <nav>
-    <div class="burger-menu" tabindex="0" aria-label="Show Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-underline"></div>
-    <div class="nav-links">
-      <a href="index.html">หน้าแรก</a>
-      <a href="about.html">ประวัติ</a>
-      <a href="portfolio.html">ผลงาน</a>
-      <a href="tools.html">เครื่องมือ</a>
-      <a href="info.html" class="active">ข้อมูล</a>
-      <a href="contact.html">ติดต่อ</a>
-      <a href="graph.html">กราฟ</a>
-      <a href="news.html">ข่าว</a>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="info.html" class="btn btn-gradient">Get Info</a>
     </div>
   </nav>
-  <div class="header-logo">
-    <span class="logo-bg-custom">
-      <img src="images/logo.png" alt="MARKMAN TRADER Logo">
-    </span>
-    <span>MARKMAN TRADER</span>
-  </div>
-  <div class="container">
-    <div class="info-section">
-      <h2>ข้อมูล Forex และแหล่งเรียนรู้</h2>
-      <p>กดปุ่มด้านล่างเพื่อติดตามแหล่งข้อมูลสำคัญ:</p>
-      <div class="info-buttons">
-        <a href="https://www.bangkokbiznews.com/business/finance/forex" target="_blank" class="info-btn"><i class="fa-regular fa-newspaper"></i> ข่าว Forex (กรุงเทพธุรกิจ)</a>
-        <a href="https://www.forexfactory.com/" target="_blank" class="info-btn"><i class="fa-solid fa-calendar-days"></i> ปฏิทินข่าว Forex Factory</a>
-        <a href="https://th.tradingview.com/markets/currencies/" target="_blank" class="info-btn"><i class="fa-solid fa-chart-line"></i> TradingView กราฟฟรี</a>
-        <a href="https://www.investing.com/currencies/" target="_blank" class="info-btn"><i class="fa-solid fa-coins"></i> ราคาตลาด Investing.com</a>
-        <a href="https://www.bangkokpost.com/business" target="_blank" class="info-btn"><i class="fa-solid fa-globe"></i> ข่าวเศรษฐกิจ BangkokPost</a>
-        <a href="https://github.com/lnw007xyz/File" target="_blank" class="info-btn"><i class="fa-brands fa-github"></i> โปรเจกต์บน GitHub</a>
-        <a href="https://www.google.com/" target="_blank" class="info-btn star"><i class="fa-solid fa-star"></i> Mark1</a>
-        <a href="https://www.google.com/" target="_blank" class="info-btn star"><i class="fa-solid fa-star"></i> Mark2</a>
-        <a href="https://www.google.com/" target="_blank" class="info-btn star"><i class="fa-solid fa-star"></i> Mark3</a>
-        <a href="https://www.google.com/" target="_blank" class="info-btn star"><i class="fa-solid fa-star"></i> Mark4</a>
-        <a href="https://www.google.com/" target="_blank" class="info-btn star"><i class="fa-solid fa-star"></i> Mark5</a>
+
+  <!-- INFO SECTION -->
+  <section class="features" style="padding-bottom:40px;">
+    <div class="container">
+      <h2>Platform Information</h2>
+      <div class="card" style="max-width:600px;margin:auto;text-align:left;">
+        <h3 style="color:#30cfd0;font-family:'Orbitron',sans-serif;margin-bottom:12px;">Terms & Conditions</h3>
+        <ul style="color:#d2f7fa;font-size:1.08rem;line-height:1.7;margin-bottom:24px;">
+          <li>TraderX provides demo and funded accounts for evaluation and trading purposes.</li>
+          <li>User data is kept private and secure. See <a href="#" style="color:#30cfd0;">privacy policy</a>.</li>
+          <li>Profits from funded accounts are split according to the program rules.</li>
+          <li>All trading involves risk. Please read our full risk disclosure.</li>
+        </ul>
+        <h3 style="color:#30cfd0;font-family:'Orbitron',sans-serif;margin-bottom:12px;">Privacy Policy</h3>
+        <p style="color:#d2f7fa;font-size:1.08rem;line-height:1.6;">
+          We use your information only for platform functionality. No information is shared with third parties. <br>
+          Contact <a href="contact.html" style="color:#30cfd0;">support</a> for privacy-related questions.
+        </p>
+        <!-- ปุ่มกดเดิม (คงไว้ ไม่ลบ) -->
+        <div style="text-align:center;margin-top:36px;">
+          <a href="index.html" class="btn btn-gradient btn-lg" style="margin:0 8px;">Back to Home</a>
+          <a href="contact.html" class="btn btn-glass btn-lg" style="margin:0 8px;">Contact Support</a>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Sound & JS -->
-  <audio id="nav-sound" preload="auto">
-    <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12c7112c43.mp3" type="audio/mp3">
-  </audio>
-  <script>
-(function() {
-  const nav = document.querySelector('nav');
-  const burger = nav.querySelector('.burger-menu');
-  const navLinks = nav.querySelector('.nav-links');
-  burger.onclick = function() {
-    nav.classList.toggle('open');
-    burger.classList.toggle('open');
-    document.body.onclick = function(e){
-      if(!nav.contains(e.target)) {
-        nav.classList.remove('open');
-        burger.classList.remove('open');
-      }
-    }
-  };
-  burger.onkeydown = (e)=>{if(e.key==='Enter'||e.key===' '){burger.click()}};
-  const underline = nav.querySelector('.nav-underline');
-  const links = [...nav.querySelectorAll('.nav-links a')];
-  let barLoop = true, loopTimer;
-  function setBar(el) {
-    if (!el) { underline.style.opacity = 0; return; }
-    underline.style.width = el.offsetWidth + "px";
-    underline.style.left = (el.offsetLeft) + "px";
-    underline.style.opacity = 1;
-  }
-  function barAutoLoop() {
-    if (!barLoop) return;
-    let i=0, dir=1;
-    loopTimer = setInterval(()=>{
-      if(!barLoop) return;
-      setBar(links[i]);
-      if(dir===1 && i===links.length-1) dir=-1;
-      else if(dir===-1 && i===0) dir=1;
-      i+=dir;
-    }, 1100);
-  }
-  const path = window.location.pathname.split('/').pop();
-  let found = false;
-  links.forEach(a=>{
-    a.classList.remove('active');
-    if (!found && a.getAttribute('href') && a.getAttribute('href').indexOf(path)!==-1) {
-      a.classList.add('active');
-      found = true;
-    }
-  });
-  setTimeout(()=>{
-    setBar(nav.querySelector('.nav-links a.active') || links[0]);
-    barAutoLoop();
-  }, 180);
-  links.forEach(link=>{
-    link.addEventListener('mouseenter', ()=>{
-      clearInterval(loopTimer);
-      barLoop=false;
-      setBar(link);
-    });
-    link.addEventListener('mouseleave', ()=>{
-      barLoop=true;
-      barAutoLoop();
-      setBar(nav.querySelector('.nav-links a.active') || links[0]);
-    });
-    link.addEventListener('focus', ()=>setBar(link));
-    link.addEventListener('blur', ()=>setBar(nav.querySelector('.nav-links a.active') || links[0]));
-    link.addEventListener('click', ()=>{
-      try{ document.getElementById('nav-sound').currentTime=0; document.getElementById('nav-sound').play(); }catch(e){}
-    });
-    link.addEventListener('mousedown', ()=>{
-      link.style.transform = 'scale(0.94)';
-    });
-    link.addEventListener('mouseup', ()=>{
-      link.style.transform = '';
-    });
-    link.addEventListener('mouseleave', ()=>{
-      link.style.transform = '';
-    });
-  });
-  links.forEach(link=>{
-    link.addEventListener('click', ()=>{
-      if(window.innerWidth < 900) {
-        nav.classList.remove('open');
-        burger.classList.remove('open');
-      }
-    });
-  });
-})();
-  </script>
+  </section>
+
+  <!-- FOREX & LINK BUTTONS SECTION -->
+  <section class="dashboard-preview" style="padding-top:0;">
+    <div class="container">
+      <h2>ข้อมูล Forex และแหล่งเรียนรู้</h2>
+      <p style="color:#d2f7fa;margin-bottom:20px;">
+        คำถามในด้านเทคนิคต้องตามแหล่งข้อมูลสำคัญ:
+      </p>
+      <div class="info-buttons" style="display:flex;flex-wrap:wrap;gap:12px 18px;margin-bottom:18px;">
+        <a href="https://www.bangkokbiznews.com/business/finance/forex" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-regular fa-newspaper"></i> ข่าว Forex Biznews
+        </a>
+        <a href="https://www.forexfactory.com/" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-solid fa-calendar-days"></i> ปฏิทินข่าว Forex Factory
+        </a>
+        <a href="https://th.tradingview.com/markets/currencies/" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-solid fa-chart-line"></i> TradingView
+        </a>
+        <a href="https://www.investing.com/currencies/" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-solid fa-coins"></i> ราคาสกุลเงิน Investing
+        </a>
+        <a href="https://www.bangkokpost.com/business" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-solid fa-globe"></i> ข่าวเศรษฐกิจ BangkokPost
+        </a>
+        <a href="https://github.com/lnw007xyz/File" target="_blank" class="info-btn btn btn-glass" style="min-width:210px;">
+          <i class="fa-brands fa-github"></i> โปรเจกต์บน GitHub
+        </a>
+      </div>
+      <div class="info-buttons" style="display:flex;flex-wrap:wrap;gap:12px 18px;">
+        <a href="https://www.google.com/" target="_blank" class="info-btn btn btn-gradient" style="min-width:110px;">
+          <i class="fa-solid fa-star"></i> Mark1
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="info-btn btn btn-gradient" style="min-width:110px;">
+          <i class="fa-solid fa-star"></i> Mark2
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="info-btn btn btn-gradient" style="min-width:110px;">
+          <i class="fa-solid fa-star"></i> Mark3
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="info-btn btn btn-gradient" style="min-width:110px;">
+          <i class="fa-solid fa-star"></i> Mark4
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="info-btn btn btn-gradient" style="min-width:110px;">
+          <i class="fa-solid fa-star"></i> Mark5
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="dashboard-preview" style="padding-top:0;">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="dashboard-cards" style="flex-wrap:wrap;">
+        <div class="card dashboard-card" style="max-width:310px;">
+          <div class="dashboard-metric">
+            <span class="metric-label" style="color:#30cfd0;">How do I join TraderX?</span>
+            <div style="color:#d2f7fa;font-size:1.06rem;margin-top:7px;">
+              Register an account and complete a free trial or start directly with a funded evaluation.
+            </div>
+          </div>
+        </div>
+        <div class="card dashboard-card" style="max-width:310px;">
+          <div class="dashboard-metric">
+            <span class="metric-label" style="color:#30cfd0;">What assets can I trade?</span>
+            <div style="color:#d2f7fa;font-size:1.06rem;margin-top:7px;">
+              Forex, stocks, indices, cryptocurrencies, and commodities on global markets.
+            </div>
+          </div>
+        </div>
+        <div class="card dashboard-card" style="max-width:310px;">
+          <div class="dashboard-metric">
+            <span class="metric-label" style="color:#30cfd0;">Is there support?</span>
+            <div style="color:#d2f7fa;font-size:1.06rem;margin-top:7px;">
+              Yes! Contact us via <a href="contact.html" style="color:#30cfd0;">contact form</a> or join our <a href="#" style="color:#30cfd0;">Discord</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <div class="footer-links">
+        <a href="info.html">Privacy</a>
+        <a href="info.html">Terms</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 TraderX. All rights reserved.</div>
+  </footer>
 </body>
 </html>
