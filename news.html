@@ -1,216 +1,245 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ข่าว - MARKMAN TRADER</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Facebook SDK สำหรับฝังโพสต์เพจ -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v19.0"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      .news-fb-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 38px;
-        margin: 38px 0 0 0;
-        width: 100%;
-      }
-      @media (max-width: 1200px) {
-        .news-fb-row {
-          grid-template-columns: 1fr;
-        }
-      }
-      .news-fb-col {
-        background: rgba(36,59,85,0.80);
-        padding: 22px 16px 16px 16px;
-        border-radius: 18px;
-        box-shadow: 0 1px 8px #0fd85025;
-        min-width: 0;
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News - TraderX</title>
+  <link rel="icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v19.0" nonce="fbNews"></script>
+  <style>
+    .news-fb-row {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      justify-content: center;
     }
-      .news-fb-col ul {
-        margin: 12px 0 14px 0;
-        padding-left: 18px;
-      }
-      .news-fb-col li {
-        margin-bottom: 7px;
-        font-size: 1em;
-      }
-      .news-fb-col a {
-        color: #0fd850;
-        text-decoration: underline;
-      }
-      .news-fb-col iframe {
-        min-width: 220px;
-        min-height: 1680px;      /* สูงขึ้น 4 เท่า */
-        width: 100%;
-        height: 1680px;          /* สูงขึ้น 4 เท่า */
-        border-radius: 18px;
-        border: 2px solid #0fd85033;
-        box-shadow: 0 0 12px #0fd85044;
-        background: #162536;
-        margin-bottom: 0;
-        display: block;
-      }
-      /* ปรับ Facebook Page ให้สูง 1680px */
-      .fb-page,
-      .fb-page span,
-      .fb-page span iframe[style] {
-        min-height: 1680px !important;
-        height: 1680px !important;
-        max-height: none !important;
-      }
-    </style>
+    .news-fb-col {
+      flex: 1 1 360px;
+      min-width: 320px;
+      max-width: 560px;
+      background: rgba(32,34,48,0.88);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px #30cfd033;
+      padding: 16px 14px;
+      margin: 8px 0;
+    }
+    .news-fb-col iframe {
+      width: 100%;
+      min-height: 480px;
+      border: none;
+      border-radius: 14px;
+      background: #191b24;
+    }
+    @media (max-width:900px) {
+      .news-fb-row { flex-direction: column; }
+      .news-fb-col { max-width:100%; }
+    }
+  </style>
 </head>
-<body class="trader-theme">
-    <!-- เมนูนำทาง -->
-    <div class="price-ticker-bar">
-  <div class="ticker-track">
-    <span class="ticker-item">EUR/USD: <b>1.0862</b> ▲</span>
-    <span class="ticker-item">GBP/USD: <b>1.2745</b> ▼</span>
-    <span class="ticker-item">USD/JPY: <b>161.31</b> ▲</span>
-    <span class="ticker-item">XAU/USD: <b>2351.00</b> ▼</span>
-    <span class="ticker-item">BTC/USD: <b>57900</b> ▲</span>
-    <span class="ticker-item">ETH/USD: <b>3080</b> ▼</span>
-    <!-- เพิ่มเหรียญหรือคู่เงินตามต้องการ -->
-  </div>
-</div>
-
-    <nav>
-        <a href="index.html">หน้าแรก</a>
-        <a href="about.html">ประวัติ</a>
-        <a href="portfolio.html">ผลงาน</a>
-        <a href="tools.html">เครื่องมือ</a>
-        <a href="info.html">ข้อมูล</a>
-        <a href="contact.html">ติดต่อ</a>
-        <a href="graph.html">กราฟ</a>
-        <a href="news.html">ข่าว</a>
-    </nav>
-    <div class="header-logo">
-        <span class="logo-bg">
-            <img src="images/logo.png" alt="MARKMAN TRADER Logo">
-        </span>
-        <span>MARKMAN TRADER</span>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="info.html" class="btn btn-gradient">Get Info</a>
     </div>
+  </nav>
+
+  <!-- NEWS SECTION -->
+  <section class="features" style="padding-bottom:20px;">
     <div class="container">
-        <!-- Section 1: ข่าว Forex ล่าสุด -->
-        <h2>ข่าว Forex ล่าสุด</h2>
-        <ul id="news-list"></ul>
-
-        <!-- Section 2: อัตราแลกเปลี่ยน -->
-        <h2 style="margin-top:38px;">อัตราแลกเปลี่ยนล่าสุด</h2>
-        <table style="width:100%;color:#fff;text-align:center;">
-          <thead>
-            <tr>
-              <th>คู่เงิน</th>
-              <th>ราคา</th>
-            </tr>
-          </thead>
-          <tbody id="rate-list"></tbody>
-        </table>
-
-        <!-- Section 3: Facebook Pages Timeline (2 คอลัมน์) -->
-        <h2 style="margin-top:45px;">โพสต์ล่าสุดจากเพจ Facebook (ในรอบ 1 วัน)</h2>
-        <div class="news-fb-row">
-            <!-- คอลัมน์ 1 เพจ Shining Gold -->
-            <div class="news-fb-col">
-                <div class="fb-page"
-                    data-href="https://web.facebook.com/shininggold.th"
-                    data-tabs="timeline"
-                    data-width="550"
-                    data-height="1680"
-                    data-small-header="false"
-                    data-adapt-container-width="true"
-                    data-hide-cover="false"
-                    data-show-facepile="true"
-                    data-hide-cta="false">
-                    <blockquote cite="https://web.facebook.com/shininggold.th" class="fb-xfbml-parse-ignore">
-                        <a href="https://web.facebook.com/shininggold.th">Shining Gold</a>
-                    </blockquote>
-                </div>
-            </div>
-            <!-- คอลัมน์ 2 เพจ YLGGroup -->
-            <div class="news-fb-col">
-                <div class="fb-page"
-                    data-href="https://web.facebook.com/YLGGroup"
-                    data-tabs="timeline"
-                    data-width="550"
-                    data-height="1680"
-                    data-small-header="false"
-                    data-adapt-container-width="true"
-                    data-hide-cover="false"
-                    data-show-facepile="true"
-                    data-hide-cta="false">
-                    <blockquote cite="https://web.facebook.com/YLGGroup" class="fb-xfbml-parse-ignore">
-                        <a href="https://web.facebook.com/YLGGroup">YLG Bullion & Futures</a>
-                    </blockquote>
-                </div>
-            </div>
+      <h2>Market News & Updates</h2>
+      <div class="features-grid">
+        <div class="card feature-card" style="min-width:280px;">
+          <i class="fa-regular fa-newspaper"></i>
+          <h3>Forex & Crypto</h3>
+          <p>Fed hints at possible rate cut by end of year, boosting investor confidence in risk assets and crypto market.</p>
+          <div style="margin-top:12px;">
+            <a href="https://www.bangkokbiznews.com/business/finance/forex" target="_blank" class="btn btn-glass btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Read More
+            </a>
+          </div>
         </div>
-
-        <!-- Section 4: วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold (ฝังหน้าเว็บจริง) -->
-        <h2 style="margin-top:45px;">วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold</h2>
-        <div class="news-fb-row">
-            <!-- คอลัมน์ YLG -->
-            <div class="news-fb-col">
-                <h3 style="margin-bottom:10px;">YLG: Daily Market Analysis</h3>
-                <iframe 
-                    src="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis"
-                    loading="lazy"></iframe>
-                <a href="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis" 
-                   target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
-            </div>
-            <!-- คอลัมน์ Shining Gold -->
-            <div class="news-fb-col">
-                <h3 style="margin-bottom:10px;">Shining Gold: Investor Corner</h3>
-                <iframe 
-                    src="https://shininggold.co.th/investor_corner/"
-                    loading="lazy"></iframe>
-                <a href="https://shininggold.co.th/investor_corner/" 
-                   target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
-            </div>
+        <div class="card feature-card" style="min-width:280px;">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Stocks</h3>
+          <p>US stock indices hit new highs after robust tech earnings and positive economic indicators.</p>
+          <div style="margin-top:12px;">
+            <a href="https://www.bangkokpost.com/business" target="_blank" class="btn btn-glass btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Bangkok Post
+            </a>
+          </div>
         </div>
+        <div class="card feature-card" style="min-width:280px;">
+          <i class="fa-solid fa-coins"></i>
+          <h3>Commodities</h3>
+          <p>Gold surges above $2,400/oz on global uncertainties. Oil prices remain volatile.</p>
+          <div style="margin-top:12px;">
+            <a href="https://www.investing.com/currencies/" target="_blank" class="btn btn-glass btn-sm">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Investing
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- More News Links -->
+      <div class="info-buttons" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="https://www.forexfactory.com/" target="_blank" class="info-btn btn btn-gradient"><i class="fa-solid fa-calendar-days"></i> Forex Calendar</a>
+        <a href="https://th.tradingview.com/markets/currencies/" target="_blank" class="info-btn btn btn-gradient"><i class="fa-solid fa-chart-line"></i> TradingView</a>
+        <a href="https://www.investing.com/" target="_blank" class="info-btn btn btn-gradient"><i class="fa-solid fa-coins"></i> Investing.com</a>
+      </div>
     </div>
-<script>
-// --------- ข่าว forex (rss2json) ---------
-const RSS_URL = "https://www.forexfactory.com/ffcal_week_this.xml";
-fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL))
-.then(response => response.json())
-.then(data => {
-  const news = data.items || [];
-  let html = "";
-  for(let i=0; i<Math.min(10, news.length); i++) {
-    html += `<li><a href="${news[i].link}" target="_blank">${news[i].title}</a></li>`;
-  }
-  document.getElementById("news-list").innerHTML = html;
-});
+  </section>
 
-// --------- ดึงอัตราแลกเปลี่ยน Forex (API: frankfurter.app) ---------
-const pairs = [
-  ["USD", "THB"],
-  ["EUR", "USD"],
-  ["GBP", "USD"],
-  ["USD", "JPY"],
-  ["AUD", "USD"]
-];
+  <!-- Section 3: Facebook Pages Timeline (2 คอลัมน์) -->
+  <section class="features" style="padding-bottom:20px;">
+    <div class="container">
+      <h2 style="margin-top:45px;">โพสต์ล่าสุดจากเพจ Facebook (ในรอบ 1 วัน)</h2>
+      <div class="news-fb-row">
+        <!-- คอลัมน์ 1 เพจ Shining Gold -->
+        <div class="news-fb-col">
+          <div class="fb-page"
+              data-href="https://web.facebook.com/shininggold.th"
+              data-tabs="timeline"
+              data-width="550"
+              data-height="1680"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="true"
+              data-hide-cta="false">
+              <blockquote cite="https://web.facebook.com/shininggold.th" class="fb-xfbml-parse-ignore">
+                  <a href="https://web.facebook.com/shininggold.th">Shining Gold</a>
+              </blockquote>
+          </div>
+        </div>
+        <!-- คอลัมน์ 2 เพจ YLGGroup -->
+        <div class="news-fb-col">
+          <div class="fb-page"
+              data-href="https://web.facebook.com/YLGGroup"
+              data-tabs="timeline"
+              data-width="550"
+              data-height="1680"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="true"
+              data-hide-cta="false">
+              <blockquote cite="https://web.facebook.com/YLGGroup" class="fb-xfbml-parse-ignore">
+                  <a href="https://web.facebook.com/YLGGroup">YLG Bullion & Futures</a>
+              </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-pairs.forEach(pair => {
-  fetch(`https://api.frankfurter.app/latest?from=${pair[0]}&to=${pair[1]}`)
-    .then(r => r.json())
+  <!-- Section 4: วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold -->
+  <section class="features" style="padding-bottom:20px;">
+    <div class="container">
+      <h2 style="margin-top:45px;">วิเคราะห์ตลาดล่าสุดจาก YLG และ Shining Gold</h2>
+      <div class="news-fb-row">
+        <!-- คอลัมน์ YLG -->
+        <div class="news-fb-col">
+          <h3 style="margin-bottom:10px;">YLG: Daily Market Analysis</h3>
+          <iframe 
+              src="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis"
+              loading="lazy"></iframe>
+          <a href="https://www.ylgbullion.co.th/th/updates/news-research/analyst-research/daily-market-analysis" 
+             target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
+        </div>
+        <!-- คอลัมน์ Shining Gold -->
+        <div class="news-fb-col">
+          <h3 style="margin-bottom:10px;">Shining Gold: Investor Corner</h3>
+          <iframe 
+              src="https://shininggold.co.th/investor_corner/"
+              loading="lazy"></iframe>
+          <a href="https://shininggold.co.th/investor_corner/" 
+             target="_blank" style="color:#0fd850; display:block; margin-top:12px;">อ่านทั้งหมด &gt;&gt;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: ข่าว forex ล่าสุด (RSS + ดึง API อัตราแลกเปลี่ยน) -->
+  <section class="features" style="padding-bottom:40px;">
+    <div class="container">
+      <h2>ข่าว Forex ล่าสุด (RSS)</h2>
+      <ul id="news-list" style="margin-bottom:24px; color:#d2f7fa;"></ul>
+      <h2>อัตราแลกเปลี่ยน Forex (Realtime)</h2>
+      <div id="forex-rates" style="margin-bottom:20px;color:#30cfd0;font-size:1.07rem;"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-chart-line"></i> TraderX
+      </div>
+      <div class="footer-links">
+        <a href="info.html">Privacy</a>
+        <a href="info.html">Terms</a>
+        <a href="contact.html">Support</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 TraderX. All rights reserved.</div>
+  </footer>
+  <script>
+    // --------- ข่าว forex (rss2json) ---------
+    const RSS_URL = "https://www.forexfactory.com/ffcal_week_this.xml";
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL))
+    .then(response => response.json())
     .then(data => {
-      let rate = data.rates ? data.rates[pair[1]] : "-";
-      document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>${rate}</td></tr>`;
-    })
-    .catch(() => {
-      document.getElementById("rate-list").innerHTML += `<tr><td>${pair[0]}/${pair[1]}</td><td>-</td></tr>`;
+      const news = data.items || [];
+      let html = "";
+      for(let i=0; i<Math.min(10, news.length); i++) {
+        html += `<li><a href="${news[i].link}" target="_blank">${news[i].title}</a></li>`;
+      }
+      document.getElementById("news-list").innerHTML = html;
     });
-});
-</script>
+
+    // --------- ดึงอัตราแลกเปลี่ยน Forex (API: frankfurter.app) ---------
+    const pairs = [
+      ["USD", "THB"],
+      ["EUR", "USD"],
+      ["GBP", "USD"],
+      ["USD", "JPY"],
+      ["AUD", "USD"]
+    ];
+    let ratesHTML = "";
+    Promise.all(
+      pairs.map(pair => 
+        fetch(`https://api.frankfurter.app/latest?from=${pair[0]}&to=${pair[1]}`)
+          .then(res => res.json())
+          .then(data => {
+            const rate = data.rates[pair[1]];
+            ratesHTML += `<div style="margin-bottom:6px;">${pair[0]} / ${pair[1]} : <b>${rate}</b></div>`;
+          })
+      )
+    ).then(() => {
+      document.getElementById('forex-rates').innerHTML = ratesHTML;
+    });
+  </script>
 </body>
 </html>
