@@ -498,3 +498,13 @@ footer {
   .info-buttons { gap: 8px 4px; }
   .info-btn { width: 100%; justify-content: flex-start; }
 }
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.04rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-bottom: 2px;
+}
