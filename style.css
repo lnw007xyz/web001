@@ -508,3 +508,40 @@ footer {
   letter-spacing: 0.2px;
   margin-bottom: 2px;
 }
+/* ปุ่ม Gradient เดิม */
+.btn-gradient {
+  background: linear-gradient(90deg, #30cfd0 0%, #330867 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 9px 24px;
+  font-weight: bold;
+  font-size: 1.07rem;
+  box-shadow: 0 4px 18px #30cfd099;
+  transition: all 0.19s;
+}
+.btn-gradient:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 6px 30px #30cfd0cc, 0 1.5px 12px #33086777;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btn-login {
+  background: linear-gradient(90deg, #fd1d1d 0%, #b721ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 9px 28px;
+  font-weight: bold;
+  font-size: 1.08rem;
+  box-shadow: 0 4px 18px #fd1d1d44;
+  margin-left: 8px;
+  transition: all 0.18s;
+  cursor: pointer;
+}
+.btn-login:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 7px 36px #fd1d1dcc, 0 2px 16px #b721ff55;
+  transform: translateY(-2px) scale(1.07) rotate(-1.5deg);
+  letter-spacing: 1.5px;
+}
