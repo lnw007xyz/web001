@@ -545,3 +545,63 @@ footer {
   transform: translateY(-2px) scale(1.07) rotate(-1.5deg);
   letter-spacing: 1.5px;
 }
+.custom-navbar {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin: 44px 0 32px 32px;
+}
+
+.brand-glow {
+  font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+  font-size: 4.4rem;
+  font-weight: 800;
+  color: #30cfd0;
+  letter-spacing: 3px;
+  text-shadow:
+      0 0 16px #30cfd0cc,
+      0 0 32px #30cfd099,
+      0 0 60px #30cfd066,
+      0 2px 0 #23242f;
+}
+
+.logo-circle {
+  background: radial-gradient(circle at 60% 40%, #30cfd0 85%, #0be3fa 100%);
+  border-radius: 50%;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+      0 0 22px #30cfd0cc,
+      0 0 44px #23242f44;
+  height: 120px;
+  width: 120px;
+}
+
+.logo-circle img {
+  height: 84px;
+  width: 84px;
+  border-radius: 50%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px #23242f) drop-shadow(0 0 12px #fff2);
+}
+
+@media (max-width: 700px) {
+  .brand-glow {
+    font-size: 2.1rem;
+  }
+  .logo-circle {
+    height: 62px;
+    width: 62px;
+    padding: 6px;
+  }
+  .logo-circle img {
+    height: 40px;
+    width: 40px;
+  }
+  .custom-navbar {
+    gap: 14px;
+    margin-left: 5vw;
+  }
+}
