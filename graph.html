@@ -28,38 +28,47 @@
       </div>
     </div>
 
-    <!-- NAVBAR แบบใหม่ -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+<nav class="navbar">
   <div class="navbar-container">
-    <div class="navbar-logo" style="display:flex;align-items:center;gap:16px;">
-      <span style="
-        font-family:'Orbitron',sans-serif;
-        font-weight:900;
-        color:#17ffe0;
-        font-size:1.8rem;
-        letter-spacing:2.5px;
-        text-shadow:0 2px 12px #12f7ff33, 0 1px 0px #111;
-        background: linear-gradient(90deg,#17ffe0 30%,#1e63f4 90%);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        display:inline-block;
-      ">
-        lnwZa007
-      </span>
-      <!-- โลโก้ใหญ่ พื้นหลังวงกลมฟ้า -->
-      <span style="
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        background:#18e0fb;
-        border-radius:50%;
-        width:44px;
-        height:44px;
-        box-shadow:0 2px 10px #12f7ff77;
-      ">
-        <img src="images/logo.png" alt="logo" style="height:32px; width:32px; border-radius:50%;">
-      </span>
-    </div>
+    <div class="navbar-logo" style="display:flex;align-items:center;gap:24px;">
+  <span style="
+  font-family:'Orbitron',sans-serif;
+  font-weight:900;
+  font-size:3.2rem;
+  letter-spacing:3.5px;
+  color:#39f8ff;
+  background: linear-gradient(90deg,#56fff7 10%,#2de1ff 90%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:inline-block;
+  line-height:1.1;
+  /* ออร่า/Glow หลายชั้น! */
+  text-shadow:
+    0 0 14px #56fff7cc,
+    0 0 32px #39f8ffcc,
+    0 0 60px #00f0ffbb,
+    0 0 90px #0080ff66,
+    0 2px 0 #0ff,
+    0 2px 6px #222;
+">
+  lnwZa007
+</span>
+
+  <span style="
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(circle,#30cfd0 75%,#0be3fa 100%);
+    border-radius:50%;
+    width:80px;
+    height:80px;
+    box-shadow:0 4px 32px #30cfd0aa,0 0 60px #30cfd055;
+  ">
+    <img src="images/logo.png" alt="logo" style="height:100px; width:100px; border-radius:50%; object-fit:contain; filter:drop-shadow(0 0 14px #0be3fa44);">
+  </span>
+</div>
+
         <ul class="navbar-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
