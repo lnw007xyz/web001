@@ -647,102 +647,394 @@ footer {
 
 
 
-/* ===================== Feature Hub Section (New) ===================== */
-.feature-hub {
-  padding: 48px 16px 72px;
-  background: radial-gradient(circle at top left, rgba(48,207,208,0.16), transparent 55%),
-              radial-gradient(circle at bottom right, rgba(0,242,254,0.16), transparent 55%);
+/* SUBPAGE HEADER (ใช้ร่วมกับทุกหน้าภายในให้โทนเดียวกับหน้าแรก) */
+.subpage-header {
+  padding: 40px 0 18px;
 }
-
-.feature-hub-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+.subpage-header .container {
+  text-align: left;
 }
-
-.feature-hub-title {
+.subpage-title {
   font-family: 'Orbitron', Arial, sans-serif;
-  font-size: 2rem;
+  font-size: 2.1rem;
+  color: #30cfd0;
+  margin-bottom: 6px;
+  text-shadow: 0 0 14px #30cfd033;
+}
+.subpage-subtitle {
+  font-size: 0.98rem;
+  color: #cbd5f5;
+  max-width: 640px;
+}
+
+/* รองรับจอเล็ก */
+@media (max-width: 600px) {
+  .subpage-header {
+    padding: 26px 0 10px;
+  }
+  .subpage-title {
+    font-size: 1.6rem;
+  }
+  .subpage-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* =========================================================
+   Festival Bright Modern Theme
+   โทนสีสว่าง สดใส แบบเทศกาล แต่ยังคุมความอ่านง่าย
+   (เพิ่มช่วงท้ายไฟล์เพื่อ override ค่าก่อนหน้าแบบนุ่ม ๆ)
+   ========================================================= */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans Thai", sans-serif;
+  background-color: #fdfaf5;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #ea580c;
+}
+
+a:hover {
+  color: #c2410c;
+}
+
+/* Layout หลัก */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 192, 203, 0.24), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(129, 230, 217, 0.22), transparent 50%);
+  background-attachment: fixed;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 20px 16px 32px;
+}
+
+/* Navbar สว่าง โปร่ง */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.site-nav {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav-brand-title {
+  font-size: 18px;
+  font-weight: 800;
+  background-image: linear-gradient(120deg, #f97316, #ec4899);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nav-brand-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.nav-links a:hover {
+  background: #fef3c7;
+  border-color: #fed7aa;
+  color: #b45309;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  border: none;
+  background: transparent;
+  color: #111827;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Hero หน้าแรกแบบสดใส */
+.hero {
+  padding: 32px 0 18px;
+}
+
+.hero-title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background-image: linear-gradient(120deg, #f97316, #ec4899);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: #4b5563;
+  max-width: 640px;
+}
+
+/* การ์ดฟีเจอร์ - โทนขาว + แถบสีสด */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.feature-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 14px 16px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: inherit;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 14px 30px rgba(148, 163, 184, 0.15);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 4px;
+  background-image: linear-gradient(120deg, #f97316, #ec4899, #22c55e, #0ea5e9);
+  opacity: 0.9;
+}
+
+.feature-card-inner {
+  margin-top: 6px;
+}
+
+.feature-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.35);
+  border-color: #fed7aa;
+}
+
+/* Subpage header - ใช้ทุกหน้ารอง */
+.subpage-header {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  padding: 18px 14px 16px;
+  border-radius: 20px;
+  background-image: linear-gradient(135deg, #ffedd5, #fef3c7);
+  border: 1px solid #fed7aa;
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2);
+}
+
+.subpage-header-inner {
+  max-width: 720px;
+}
+
+.subpage-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #9a3412;
+  margin-bottom: 4px;
+}
+
+.subpage-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Changelog styling */
+.changelog {
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.changelog-heading {
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 1px;
+  color: #1f2933;
+  margin: 0 0 4px;
+}
+
+.changelog-intro {
+  font-size: 13px;
+  color: #6b7280;
+  max-width: 640px;
+  margin-bottom: 12px;
+}
+
+.changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.changelog-item {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.16);
+}
+
+.changelog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
   margin-bottom: 6px;
 }
 
-.feature-hub-subtitle {
-  font-size: 0.95rem;
-  color: #d1d5db;
-  max-width: 640px;
-  margin-bottom: 22px;
+.changelog-version {
+  font-weight: 700;
+  font-size: 14px;
+  color: #ea580c;
 }
 
-.feature-hub-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+.changelog-date {
+  font-size: 12px;
+  color: #6b7280;
 }
 
-.feature-hub-card {
-  background: rgba(24,27,36,0.96);
-  border-radius: 18px;
-  border: 1px solid rgba(48,207,208,0.30);
-  padding: 16px 18px;
-  text-decoration: none;
-  color: #e5e7eb;
+.changelog-tags {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 4px;
-  box-shadow: 0 12px 40px rgba(15,23,42,0.8);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  margin-bottom: 6px;
 }
 
-.feature-hub-card:hover {
-  transform: translateY(-4px);
-  border-color: #0ff0fc;
-  background: rgba(15,23,42,0.98);
-  box-shadow: 0 18px 55px rgba(15,23,42,0.98);
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: #f3f4f6;
+  color: #374151;
 }
 
-.feature-hub-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.tag-ui {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.tag-feature {
+  background: #ecfeff;
+  border-color: #a5f3fc;
+  color: #0e7490;
+}
+
+.tag-theme {
+  background: #fdf2f8;
+  border-color: #f9a8d4;
+  color: #be185d;
+}
+
+.changelog-details {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  padding: 12px 16px 18px;
+  font-size: 12px;
   color: #9ca3af;
+  text-align: center;
 }
 
-.feature-hub-name {
-  font-size: 1.02rem;
-  font-weight: 600;
-}
-
-.feature-hub-desc {
-  font-size: 0.83rem;
-  color: #9ca3af;
-}
-
-.feature-hub-meta {
-  margin-top: 6px;
-  font-size: 0.76rem;
-  color: #a5b4fc;
-}
-
-/* Responsive tweaks */
-@media (max-width: 960px) {
-  .feature-hub-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Responsive ปรับการ์ดและเมนูบนมือถือ */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px 12px 26px;
   }
-}
 
-@media (max-width: 700px) {
-  .feature-hub {
-    padding: 32px 14px 56px;
+  .nav-links {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    left: 0;
+    padding: 8px 16px 12px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid #e5e7eb;
+    display: none;
   }
-  .feature-hub-title {
-    font-size: 1.5rem;
-    text-align: left;
+
+  .nav-links.is-open {
+    display: flex;
   }
-  .feature-hub-subtitle {
-    font-size: 0.85rem;
-  }
-  .feature-hub-grid {
+
+  .feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
+  .subpage-header {
+    padding: 14px 12px;
+    margin-top: 14px;
+    margin-bottom: 16px;
+  }
+
+  .subpage-title {
+    font-size: 18px;
+  }
+
+  .subpage-subtitle {
+    font-size: 13px;
   }
 }
