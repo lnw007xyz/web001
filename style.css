@@ -1038,3 +1038,136 @@ a:hover {
     font-size: 13px;
   }
 }
+
+
+/* ================= Festival Bright Overrides v2 ================= */
+
+/* พื้นหลังเว็บสว่าง อ่านง่าย */
+html, body {
+  background: #fdfaf5;
+  color: #111827;
+}
+
+/* Navbar: พื้นขาวใส ตัวหนังสือเข้ม */
+.navbar {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar-menu li a {
+  color: #111827;
+}
+
+.navbar-menu li a:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 999px;
+}
+
+/* Hero หน้าแรก: ไล่เฉดส้ม-ฟ้า สดใส */
+.hero {
+  background: radial-gradient(circle at top left, #fff7ed 0%, #e0f2fe 40%, #fdfaf5 100%);
+  color: #111827;
+}
+
+.hero-content h1,
+.hero-content h2,
+.hero-content h3 {
+  color: #111827;
+  text-shadow: none;
+}
+
+.hero-content p {
+  color: #4b5563;
+}
+
+/* ปุ่มหลักให้สีฉูดแต่ยังอ่านง่าย */
+.btn-gradient {
+  background: linear-gradient(120deg, #f97316 0%, #ec4899 50%, #6366f1 100%);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(236, 72, 153, 0.7);
+}
+
+.btn-gradient:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 26px rgba(236, 72, 153, 0.9);
+}
+
+/* การ์ดพื้นขาว มีแถบสีด้านบน ใช้ได้ทั้ง news/tools/ฯลฯ */
+.card,
+.feature-card,
+.news-fb-col,
+.news-fb-inline {
+  background: #ffffff !important;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 28px rgba(148, 163, 184, 0.28);
+  color: #111827;
+}
+
+/* แถบสีด้านบนสไตล์งานวัด */
+.feature-card,
+.card.tool-card,
+.news-fb-inline,
+.news-fb-col {
+  border-top: 4px solid #fb923c;
+}
+
+/* ไอคอนและหัวข้อในการ์ดให้ใช้สีสด */
+.feature-card i,
+.card i {
+  color: #ec4899;
+}
+
+.feature-card h3,
+.card h3,
+.news-fb-inline h3,
+.news-fb-col h3 {
+  color: #111827;
+}
+
+.feature-card p,
+.card p,
+.news-fb-inline p,
+.news-fb-col p {
+  color: #4b5563;
+}
+
+/* Subpage header ให้กลมกลืนกับธีมใหม่ */
+.subpage-header {
+  background-image: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fde68a;
+  box-shadow: 0 10px 24px rgba(251, 191, 36, 0.28);
+}
+
+.subpage-title {
+  color: #9a3412;
+}
+
+.subpage-subtitle {
+  color: #6b7280;
+}
+
+/* จูน iframe news ให้เข้ากับพื้นหลังสว่าง */
+.news-fb-col iframe {
+  background: #f9fafb !important;
+}
+
+/* Footer ให้สว่างและอ่านง่าย */
+.footer {
+  background: #ffffff;
+  color: #4b5563;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-bottom {
+  color: #9ca3af;
+}
+
+/* Responsive: ให้พื้นสว่างต่อเนื่องบนจอเล็ก */
+@media (max-width: 960px) {
+  body {
+    background: #fdfaf5;
+  }
+}
