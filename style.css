@@ -1171,3 +1171,46 @@ html, body {
     background: #fdfaf5;
   }
 }
+
+/* ===== Mobile overflow fix for navbar & global width ===== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .navbar-logo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .navbar-menu li a {
+    padding: 4px 8px;
+  }
+
+  .navbar-container > div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .navbar-container > div:last-child .btn {
+    flex: 0 0 auto;
+  }
+}
