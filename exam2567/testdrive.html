@@ -438,14 +438,6 @@ body {
                 <h1>ระบบสอบขับรถ</h1>
                 <p style="color: var(--color-text-secondary); font-size: var(--font-size-lg);">เลือกชุดข้อสอบที่ต้องการทำ</p>
             </div>
-            <div class="user-panel" style="margin-bottom: var(--space-24);">
-                <label for="userNameInput" style="display:block; margin-bottom: 4px;">ชื่อผู้ทำข้อสอบ</label>
-                <input id="userNameInput" type="text" placeholder="กรอกชื่อของคุณ" style="padding:8px; width:100%; max-width:320px; border-radius:6px; border:1px solid #ccc; margin-bottom:8px;">
-                <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:8px;">
-                    <button class="btn btn-primary" type="button" onclick="startRandomExam()">สุ่มข้อสอบ 50 ข้อ (ทุกหมวด)</button>
-                    <button class="btn btn-secondary" type="button" onclick="showHistoryScreen()">ดูประวัติการทำข้อสอบ</button>
-                </div>
-            </div>
             <div id="examList" class="exam-grid"></div>
         </div>
 
@@ -454,10 +446,6 @@ body {
             <div class="question-container">
                 <div class="question-header">
                     <div class="question-number" id="questionNumber"></div>
-                    <div style="margin-left:auto; text-align:right; font-size: var(--font-size-sm);">
-                        <div id="examUserDisplay"></div>
-                        <div id="timerDisplay" style="font-weight:bold;"></div>
-                    </div>
                     <button class="btn btn-secondary" onclick="backToMenu()">กลับไปเมนู</button>
                 </div>
                 <div class="question-text" id="questionText"></div>
@@ -477,21 +465,9 @@ body {
                     <div class="result-score" id="resultScore"></div>
                     <div class="result-percentage" id="resultPercentage"></div>
                 </div>
-                <div class="result-meta" id="resultMeta" style="margin-top:8px; font-size: var(--font-size-sm); color: var(--color-text-secondary);"></div>
                 <div class="result-details" id="resultDetails"></div>
                 <div class="nav-buttons" style="margin-top: var(--space-32);">
                     <button class="btn btn-primary" onclick="backToMenu()">กลับไปเมนู</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- History Screen -->
-        <div id="historyScreen" class="screen hidden">
-            <div class="result-container">
-                <h2 style="margin-bottom: var(--space-16);">ประวัติการทำข้อสอบ</h2>
-                <div id="historyList" style="font-size: var(--font-size-sm);"></div>
-                <div class="nav-buttons" style="margin-top: var(--space-32);">
-                    <button class="btn btn-secondary" onclick="backToMenu()">กลับไปเมนู</button>
                 </div>
             </div>
         </div>
@@ -16138,18 +16114,9 @@ let currentQuestionIndex = 0;
 let userAnswers = {};
 let isAnswerMode = false;
 
-// Additional app-level state
-let appMode = 'normal'; // 'normal' หรือ 'random'
-let userName = '';
-let examStartTime = null;
-let examTimerId = null;
-const EXAM_DURATION_SECONDS = 69 * 60; // จับเวลา 30 นาทีต่อชุด
-
 // Initialize app
 function init() {
-  loadUserProfile();
   renderExamList();
-  renderHistory();
 }
 
 // Render exam list on main menu
@@ -16171,29 +16138,14 @@ function renderExamList() {
 
 // Start exam
 function startExam(examId) {
-  appMode = 'normal';
-  const nameInput = document.getElementById('userNameInput');
-  userName = nameInput ? nameInput.value.trim() : '';
-  if (!userName) {
-    userName = 'ไม่ระบุชื่อ';
-  }
-  // บันทึกชื่อผู้ใช้ไว้ใน localStorage
-  try {
-    localStorage.setItem('exam_user_name', userName);
-  } catch (e) {}
-
   currentExam = examData.exams.find(e => e.id === examId);
   currentQuestionIndex = 0;
   userAnswers = {};
   isAnswerMode = false;
-  examStartTime = Date.now();
-  startTimer();
-  updateExamHeaderMeta();
-
+  
   showScreen('examScreen');
   renderQuestion();
 }
-
 
 // Render current question
 function renderQuestion() {
@@ -16213,19 +16165,15 @@ function renderQuestion() {
   // ถ้ามีรูปภาพจากต้นฉบับ ให้แสดงด้านล่างข้อความ (หากไฟล์รูปมีอยู่ในโฟลเดอร์เดียวกัน)
   if (question.image) {
     const img = document.createElement('img');
-    let imagePath = String(question.image).trim();
-    const match = imagePath.match(/([^\\/]+)$/);
-    const filename = match ? match[1] : imagePath;
-    img.src = 'images/' + filename;
+    img.src = question.image;
     img.alt = 'รูปภาพประกอบคำถาม';
     img.style.display = 'block';
     img.style.maxWidth = '100%';
     img.style.marginTop = '16px';
     questionText.appendChild(img);
   }
-
-
-optionsContainer.innerHTML = '';
+  
+  optionsContainer.innerHTML = '';
   optionsContainer.className = `options${isAnswerMode ? ' answer-mode' : ''}`;
   
   question.options.forEach(option => {
@@ -16286,14 +16234,12 @@ function nextQuestion() {
 // Check answers and show results
 
 
-
 function checkAnswers() {
   isAnswerMode = true;
-  stopTimer();
-
   let correctCount = 0;
   let totalWithKey = 0;
 
+  // นับเฉพาะข้อที่มีการกำหนดเฉลย (question.correct ไม่เป็น null/undefined)
   currentExam.questions.forEach((question, index) => {
     if (question.correct) {
       totalWithKey++;
@@ -16303,96 +16249,85 @@ function checkAnswers() {
     }
   });
 
+  // ถ้ายังไม่มีการกำหนดเฉลยในระบบ ให้แสดงผลเฉพาะคำตอบที่เลือก โดยไม่คิดคะแนน
   let scoreText = '-';
   let percentageText = '-';
-  let percentageValue = 0;
 
   if (totalWithKey > 0) {
-    percentageValue = (correctCount / totalWithKey) * 100;
-    const percentage = percentageValue.toFixed(1);
+    const percentage = ((correctCount / totalWithKey) * 100).toFixed(1);
     scoreText = `${correctCount}/${totalWithKey}`;
     percentageText = `${percentage}%`;
   }
 
-  const scoreEl = document.getElementById('resultScore');
-  const percentEl = document.getElementById('resultPercentage');
-  if (scoreEl) scoreEl.textContent = scoreText;
-  if (percentEl) percentEl.textContent = percentageText;
-
-  // คำนวณเวลาใช้สอบ
-  let durationSeconds = 0;
-  if (examStartTime) {
-    const diffMs = Date.now() - examStartTime;
-    durationSeconds = Math.max(0, Math.round(diffMs / 1000));
-  }
-  const metaEl = document.getElementById('resultMeta');
-  if (metaEl) {
-    if (totalWithKey > 0) {
-      const rank = getRankLabel(percentageValue);
-      metaEl.textContent = `ผู้ทำข้อสอบ: ${userName || 'ไม่ระบุชื่อ'} | ชุด: ${currentExam.title} | ใช้เวลา: ${formatDuration(durationSeconds)} | ระดับ: ${rank}`;
-    } else {
-      metaEl.textContent = `ผู้ทำข้อสอบ: ${userName || 'ไม่ระบุชื่อ'} | ชุด: ${currentExam.title} | ใช้เวลา: ${formatDuration(durationSeconds)} (ยังไม่กำหนดเฉลยในระบบครบทุกข้อ)`;
-    }
-  }
-
-  // บันทึกประวัติ (เฉพาะชุดที่มีเฉลย)
-  if (totalWithKey > 0) {
-    saveAttemptToHistory(currentExam.title, scoreText, percentageText, durationSeconds);
-  }
+  document.getElementById('resultScore').textContent = scoreText;
+  document.getElementById('resultPercentage').textContent = percentageText;
 
   const resultDetails = document.getElementById('resultDetails');
-  if (resultDetails) {
-    resultDetails.innerHTML = '';
-    currentExam.questions.forEach((question, index) => {
-      const userAnswer = userAnswers[index + 1] || '-';
-      const hasKey = !!question.correct;
-      const isCorrect = hasKey && userAnswer === question.correct;
+  resultDetails.innerHTML = '';
 
-      const item = document.createElement('div');
-      item.className = 'result-item';
-      item.style.padding = '8px 0';
-      item.style.borderBottom = '1px solid #eee';
-      item.innerHTML = `
-        <div><strong>ข้อที่ ${index + 1}</strong></div>
-        <div style="margin-top:4px;">${question.text}</div>
-        <div style="margin-top:4px;">
-          คำตอบของคุณ: ${userAnswer}
-          ${
-            !hasKey
-              ? '<span style="color: var(--color-text-secondary);"> (ยังไม่กำหนดเฉลยในระบบ – แสดงผลเฉพาะคำตอบที่เลือก)</span>'
-              : isCorrect
-                ? '<span style="color: var(--color-success);"> ถูกต้อง</span>'
-                : `<span style="color: var(--color-error);"> ผิด (คำตอบที่ถูกคือ ${question.correct})</span>`
-          }
+  currentExam.questions.forEach((question, index) => {
+    const userAnswer = userAnswers[index + 1] || '-';
+    const hasKey = !!question.correct;
+    const isCorrect = hasKey && userAnswer === question.correct;
+
+    // เตรียม HTML ของตัวเลือกทั้งหมด
+    let optionsHtml = '';
+    if (Array.isArray(question.options) && question.options.length > 0) {
+      const items = question.options.map(opt => {
+        // ทำให้ตัวเลือกที่ถูกต้องเน้นสี และตัวเลือกที่ผู้ทำเลือกมีวงเล็บกำกับ
+        const isThisCorrect = hasKey && opt.label === question.correct;
+        const isThisUser = userAnswer === opt.label;
+        let extra = '';
+        if (isThisCorrect && isThisUser) {
+          extra = ' (คุณเลือก & ถูกต้อง)';
+        } else if (isThisCorrect) {
+          extra = ' (คำตอบที่ถูก)';
+        } else if (isThisUser) {
+          extra = ' (คำตอบที่คุณเลือก)';
+        }
+        const color = isThisCorrect
+          ? ' style="color: var(--color-success);"'
+          : '';
+        return `<li${color}>${opt.label}. ${opt.text}${extra}</li>`;
+      });
+      optionsHtml = `<ul class="result-options">${items.join('')}</ul>`;
+    }
+
+    const item = document.createElement('div');
+    item.className = 'result-item';
+    item.innerHTML = `
+      <div class="result-icon">
+        ${!hasKey ? '?' : (isCorrect ? '✓' : '✗')}
+      </div>
+      <div class="result-text">
+        <strong>ข้อที่ ${index + 1}</strong> - ตอบ ${userAnswer}
+        ${
+          !hasKey
+            ? '<span style="color: var(--color-text-secondary);"> (ยังไม่กำหนดเฉลยในระบบ – แสดงผลเฉพาะคำตอบที่เลือก)</span>'
+            : isCorrect
+              ? '<span style="color: var(--color-success);"> ถูกต้อง</span>'
+              : `<span style="color: var(--color-error);"> ผิด (คำตอบที่ถูกคือ ${question.correct})</span>`
+        }
+        <div class="result-question">
+          โจทย์: ${question.text || ''}
         </div>
-      `;
-      resultDetails.appendChild(item);
-    });
-  }
+        ${optionsHtml}
+      </div>
+    `;
+    resultDetails.appendChild(item);
+  });
 
   showScreen('resultScreen');
 }
 
-
-
 // Back to menu
-
 function backToMenu() {
-  stopTimer();
   currentExam = null;
   currentQuestionIndex = 0;
   userAnswers = {};
   isAnswerMode = false;
-
-  const timerEl = document.getElementById('timerDisplay');
-  if (timerEl) timerEl.textContent = '';
-  const userEl = document.getElementById('examUserDisplay');
-  if (userEl) userEl.textContent = '';
-
   showScreen('menu');
-  renderHistory();
 }
-
 
 // Show specific screen
 function showScreen(screenId) {
@@ -16400,208 +16335,6 @@ function showScreen(screenId) {
     screen.classList.add('hidden');
   });
   document.getElementById(screenId).classList.remove('hidden');
-}
-
-
-// === Helper & enhanced features ===
-
-// โหลดชื่อผู้ใช้จาก localStorage มาใส่ช่องกรอกชื่อ
-function loadUserProfile() {
-  try {
-    const savedName = localStorage.getItem('exam_user_name');
-    if (savedName) {
-      const input = document.getElementById('userNameInput');
-      if (input) {
-        input.value = savedName;
-      }
-      userName = savedName;
-    }
-  } catch (e) {}
-}
-
-// อัปเดตชื่อผู้ทำข้อสอบและตัวจับเวลาบนหัวข้อข้อสอบ
-function updateExamHeaderMeta() {
-  const userEl = document.getElementById('examUserDisplay');
-  if (userEl) {
-    userEl.textContent = userName ? `ผู้ทำข้อสอบ: ${userName}` : '';
-  }
-}
-
-// สุ่มข้อสอบ 50 ข้อจากทุกหมวด
-function startRandomExam() {
-  appMode = 'random';
-  const nameInput = document.getElementById('userNameInput');
-  userName = nameInput ? nameInput.value.trim() : '';
-  if (!userName) {
-    userName = 'ไม่ระบุชื่อ';
-  }
-  try {
-    localStorage.setItem('exam_user_name', userName);
-  } catch (e) {}
-
-  // รวมข้อสอบทุกหมวด
-  const allQuestions = [];
-  examData.exams.forEach(exam => {
-    exam.questions.forEach((q) => {
-      allQuestions.push(q);
-    });
-  });
-
-  // สุ่มและเลือก 50 ข้อ
-  const shuffled = shuffleArray(allQuestions);
-  const selected = shuffled.slice(0, 50);
-
-  currentExam = {
-    id: 999,
-    title: 'สุ่มข้อสอบ 50 ข้อ (ทุกหมวด)',
-    questions: selected
-  };
-
-  currentQuestionIndex = 0;
-  userAnswers = {};
-  isAnswerMode = false;
-  examStartTime = Date.now();
-  startTimer();
-  updateExamHeaderMeta();
-
-  showScreen('examScreen');
-  renderQuestion();
-}
-
-// ฟังก์ชันสุ่ม array แบบ Fisher-Yates
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-  return a;
-}
-
-// เริ่มจับเวลา
-function startTimer() {
-  stopTimer(); // กันกรณีมี timer เก่า
-  let remaining = EXAM_DURATION_SECONDS;
-  const timerEl = document.getElementById('timerDisplay');
-
-  function tick() {
-    const minutes = Math.floor(remaining / 60);
-    const seconds = remaining % 60;
-    if (timerEl) {
-      timerEl.textContent = `เวลาที่เหลือ: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-    if (remaining <= 0) {
-      stopTimer();
-      if (!isAnswerMode) {
-        checkAnswers();
-      }
-      return;
-    }
-    remaining -= 1;
-  }
-
-  tick();
-  examTimerId = setInterval(tick, 1000);
-}
-
-// หยุดจับเวลา
-function stopTimer() {
-  if (examTimerId) {
-    clearInterval(examTimerId);
-    examTimerId = null;
-  }
-}
-
-// แปลงเวลาที่ใช้เป็นข้อความ
-function formatDuration(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins} นาที ${secs} วินาที`;
-}
-
-// อ่าน/เขียนประวัติการทำข้อสอบใน localStorage
-function getHistoryList() {
-  try {
-    const raw = localStorage.getItem('exam_history');
-    if (!raw) return [];
-    const arr = JSON.parse(raw);
-    return Array.isArray(arr) ? arr : [];
-  } catch (e) {
-    return [];
-  }
-}
-
-function saveHistoryList(list) {
-  try {
-    localStorage.setItem('exam_history', JSON.stringify(list));
-  } catch (e) {}
-}
-
-// แปะข้อมูลลงประวัติเมื่อทำข้อสอบเสร็จ
-function saveAttemptToHistory(examTitle, scoreText, percentage, durationSeconds) {
-  const list = getHistoryList();
-  const now = new Date();
-  const item = {
-    name: userName || 'ไม่ระบุชื่อ',
-    examTitle,
-    mode: appMode,
-    scoreText,
-    percentage,
-    durationSeconds,
-    durationText: formatDuration(durationSeconds),
-    timestamp: now.toISOString()
-  };
-  list.unshift(item);
-  // เก็บแค่ล่าสุด 50 รายการก็พอ
-  const trimmed = list.slice(0, 50);
-  saveHistoryList(trimmed);
-}
-
-// เรนเดอร์ประวัติลงหน้า History
-function renderHistory() {
-  const container = document.getElementById('historyList');
-  if (!container) return;
-  const list = getHistoryList();
-  if (!list.length) {
-    container.innerHTML = '<p>ยังไม่มีประวัติการทำข้อสอบ</p>';
-    return;
-  }
-
-  const rows = list.map(item => {
-    const date = new Date(item.timestamp);
-    const dateText = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ` +
-                     `${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
-    return `
-      <div style="padding:8px 0; border-bottom:1px solid #eee;">
-        <div><strong>${item.name}</strong> — ${item.examTitle} (${item.mode === 'random' ? 'สุ่ม 50 ข้อ' : 'ชุดเต็ม'})</div>
-        <div>คะแนน: ${item.scoreText} (${item.percentage}%) | ใช้เวลา: ${item.durationText}</div>
-        <div style="color: var(--color-text-secondary); font-size: 12px;">ทำเมื่อ: ${dateText}</div>
-      </div>
-    `;
-  }).join('');
-
-  container.innerHTML = rows;
-}
-
-// ไปหน้าประวัติ
-function showHistoryScreen() {
-  renderHistory();
-  showScreen('historyScreen');
-}
-
-// ให้ rank label จากเปอร์เซ็นต์
-function getRankLabel(percentage) {
-  if (percentage >= 90) {
-    return '🔥 ระดับตำนาน! พร้อมสอบจริงแน่นอน';
-  } else if (percentage >= 80) {
-    return '⭐ ยอดเยี่ยม เหลือแค่เก็บรายละเอียด';
-  } else if (percentage >= 70) {
-    return '👍 ผ่านเกณฑ์พื้นฐานแล้ว';
-  } else {
-    return '💪 ยังต้องฝึกเพิ่มอีกนิด ลุยต่อได้เลย';
-  }
 }
 
 // Start application
