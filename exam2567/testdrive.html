@@ -446,6 +446,9 @@ body {
                 <button class="btn btn-secondary" onclick="showStudyScreen()">
                     อ่านแนวข้อสอบ (ดูโจทย์ + เฉลยตามหมวด)
                 </button>
+                <button class="btn btn-secondary" onclick="openOtherExamSearch()">
+                    แนวข้อสอบอื่นๆ (ค้นจาก Google: ใบขับขี่ 2568)
+                </button>
             </div>
 
 <div id="examList" class="exam-grid"></div>
@@ -12894,6 +12897,15 @@ function showScreen(screenId) {
 
 // Start application
 init();
+
+
+    // เปิดหน้าแนวข้อสอบอื่น ๆ จาก Google
+    function openOtherExamSearch() {
+        const query = 'แนวข้อสอบใบขับขี่ 2568';
+        const url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+        window.open(url, '_blank');
+    }
+
 </script>
 
 </body>
