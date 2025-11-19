@@ -12605,18 +12605,28 @@ function renderQuestion() {
   const textNode = document.createElement('div');
   textNode.textContent = question.text;
   questionText.appendChild(textNode);
-  // ถ้ามีรูปภาพจากต้นฉบับ ให้แสดงด้านล่างข้อความ (หากไฟล์รูปมีอยู่ในโฟลเดอร์เดียวกัน)
-  if (question.image) {
-    const img = document.createElement('img');
-    img.src = question.image;
-    img.alt = 'รูปภาพประกอบคำถาม';
-    img.style.display = 'block';
-    img.style.maxWidth = '100%';
-    img.style.marginTop = '16px';
-    questionText.appendChild(img);
-  }
-  
-  optionsContainer.innerHTML = '';
+ // ถ้ามีรูปภาพจากต้นฉบับ ให้แสดงด้านล่างข้อความ (หากไฟล์รูปมีอยู่ในโฟลเดอร์เดียวกัน)
+if (question.image) {
+  const img = document.createElement('img');
+
+  // แก้ไข 2025-11-19: ดึงเฉพาะชื่อไฟล์จากพาธเดิม แล้วชี้ไปที่โฟลเดอร์ images/
+  // ตัวอย่าง: "./ป้ายจราจร_files/180323152843.jpg" -> "180323152843.jpg"
+  const rawPath = String(question.image).trim();
+  const normalizedPath = rawPath.replace(/\\/g, '/'); // เผื่อบางข้อใช้ backslash (\\) แบบ Windows
+  const fileName = normalizedPath.split('/').pop();
+
+  // ใช้โฟลเดอร์ images ซึ่งอยู่ใน exam2567 เป็นที่เก็บไฟล์รูปทั้งหมด
+  img.src = `images/${fileName}`;
+
+  img.alt = 'รูปภาพประกอบคำถาม';
+  img.style.display = 'block';
+  img.style.maxWidth = '100%';
+  img.style.marginTop = '16px';
+  questionText.appendChild(img);
+}
+
+optionsContainer.innerHTML = '';
+
   optionsContainer.className = `options${isAnswerMode ? ' answer-mode' : ''}`;
   
   question.options.forEach(option => {
